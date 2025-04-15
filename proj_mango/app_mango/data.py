@@ -18,20 +18,51 @@ image_url                # Link or path to an image of the pest"""
 
 pest1 = PestInfo(
     pest_id=1,
-    common_name="Hello Hello",
-    scientific_name="",
-    family="",
-    description="",
-    life_cycle="",
-    damage_description="",
-    importance="",
-    hosts="",
-    critical_control_period="",
-    monitoring="",
-    comments="",
+    common_name="Mango seed weevil",
+    scientific_name="Sternochetus mangiferae",
+    family="Curculionidae",
+    description="Eggs: creamy white, elongate; Larvae: white, legless with brown head; Adults: dark brown to grey-black with a snout.",
+    life_cycle="One generation per year. Development from egg to adult ~53 days. Eggs laid on fruit, larvae feed inside seed.",
+    damage_description="Damage is only to the seed, with sap exudate at egg laying; external symptoms not visible at harvest.",
+    importance="Quarantine pest; significant in trade regulation.",
+    hosts="Mangoes",
+    critical_control_period="Pre-flowering and post-fruit set",
+    monitoring="Inspect young fruit for egg scars and random fruit samples for larval presence in seeds.",
+    comments="Remove fallen fruit to reduce populations.",
     image_url=""
 )
 
+pest2 = PestInfo(
+    pest_id=2,
+    common_name="Mango seed weevil",
+    scientific_name="Sternochetus mangiferae",
+    family="Coreidae",
+    description="Eggs: pale green, oval; Nymphs: tear-drop shaped with red and black patterns; Adults: green with brown back.",
+    life_cycle="Egg to adult: 35-42 days; 4-5 generations/year; eggs laid singly on young shoots.",
+    damage_description="Lesions and cracks on shoots and young fruit; fruit drop and internal cavities in mature fruit.",
+    importance="High; causes significant fruit loss.",
+    hosts="Mango and other tropical fruits",
+    critical_control_period="Flushing to fruit development",
+    monitoring="Inspect young fruit for egg scars and random fruit samples for larval presence in seeds.",
+    comments="Difficult to find; causes internal damage.",
+    image_url=""
+)
+
+pest3 = PestInfo(
+    pest_id=3,
+    common_name="Mango fruit borer",
+    scientific_name="Citripestis eutraphera",
+    family="Pyralidae",
+    description="Eggs: white, turn red in a day; Larvae: pale pink to red brown with dark head; Adults: dark brown forewings.",
+    life_cycle="Egg to adult ~30 days; larvae pupate after 14 days feeding, adults live ~10 days.",
+    damage_description="Frass around fruit stem; larvae tunnel into fruit, damaging flesh.",
+    importance="High; affects fruit marketability.",
+    hosts="Mango",
+    critical_control_period="Fruit development stage",
+    monitoring="Inspect fruit on tree and fallen fruit for frass and holes.",
+    comments="More common in the Northern Territory.",
+    image_url=""
+)
 
 
 
