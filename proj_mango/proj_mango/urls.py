@@ -25,20 +25,20 @@ urlpatterns = [
     
     # -- my urls -- #
 
-    # Home page route
+    # Home Page URL
     path('', views.home, name='home'),
-    
-    # Pest/Disease list page
-    path('pests/', views.pest_list_view, name='pest_list'),
-    
-    # Pest/Disease detail page, using the item_id as a dynamic URL parameter
-    path('pest/<int:item_id>/', views.pest_detail_view, name='pest_detail'),
-    
-    # About page route
+
+    # Pest & Disease List URL
+    path('pests-diseases/', views.pest_disease_list, name='pest_disease_list'),
+
+    # Pest Detail URL (Dynamic URL based on pest_id)
+    path('pests/<int:pest_id>/', views.pest_detail, name='pest_detail'),
+
+    # Disease Detail URL (Dynamic URL based on disease_id)
+    path('diseases/<int:disease_id>/', views.disease_detail, name='disease_detail'),
+
+    # About Page URL
     path('about/', views.about, name='about'),
-    
-    # References page route
-    path('references/', views.references, name='references'),
 ]
 
 
