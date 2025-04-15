@@ -1,0 +1,119 @@
+<!-- app_pests/templates/app_pests/pest_detail.html -->
+{% extends "app_pests/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="pest-detail">
+    <nav class="breadcrumb">
+        <a href="{% url 'home' %}">Home</a> &gt;
+        <a href="{% url 'pests_list' %}">Pests & Diseases</a> &gt;
+        <span>{{ pest.name }}</span>
+    </nav>
+    {% endblock %}
+    
+    <div class="detail-container">
+        <div class="detail-header">
+            <div class="header-content">
+                <h1>{{ pest.name }}</h1>
+                <div class="pest-type">
+                    {% if "disease" in pest.name|lower %}
+                        <span class="badge disease"><i class="fas fa-virus"></i> Disease</span>
+                    {% else %}
+                        <span class="badge insect"><i class="fas fa-bug"></i> Insect</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn-secondary"><i class="fas fa-print"></i> Print Info</button>
+                <button class="btn-secondary"><i class="fas fa-share-alt"></i> Share</button>
+            </div>
+        </div>
+        
+        <div class="detail-content">
+            <div class="detail-image">
+                {% if pest.image_url %}
+                    <img src="{{ pest.image_url }}" alt="{{ pest.name }}" onerror="this.src='https://via.placeholder.com/600x400?text={{ pest.name }}'">
+                {% else %}
+                    <img src="https://via.placeholder.com/600x400?text={{ pest.name }}" alt="{{ pest.name }}">
+                {% endif %}
+            </div>
+            
+            <div class="info-tabs">
+                <div class="tab-headers">
+                    <button class="tab-btn active" data-tab="overview">Overview</button>
+                    <button class="tab-btn" data-tab="identification">Identification</button>
+                    <button class="tab-btn" data-tab="management">Management</button>
+                    <button class="tab-btn" data-tab="gallery">Gallery</button>
+                </div>
+                
+                <div class="tab-content">
+                    <div class="tab-pane active" id="overview">
+                        <h2>About {{ pest.name }}</h2>
+                        <p>{{ pest.description }}</p>
+                        
+                        <div class="info-card">
+                            <h3>Quick Facts</h3>
+                            <ul class="fact-list">
+                                <li><strong>Scientific Name:</strong> <em>Scientific name here</em></li>
+                                <li><strong>Type:</strong> {% if "disease" in pest.name|lower %}Disease{% else %}Insect Pest{% endif %}</li>
+                                <li><strong>Affected Parts:</strong> {{ pest.affected_parts }}</li>
+                                <li><strong>Distribution:</strong> Tropical and subtropical mango growing regions</li>
+                                <li><strong>Severity:</strong> 
+                                    <div class="severity-meter">
+                                        <div class="severity-bar" style="width: 70%"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="identification">
+                        <h2>How to Identify {{ pest.name }}</h2>
+                        <div class="symptoms">
+                            <h3>Key Symptoms</h3>
+                            <ul class="symptom-list">
+                                <li>Symptom description 1</li>
+                                <li>Symptom description 2</li>
+                                <li>Symptom description 3</li>
+                                <li>Symptom description 4</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="identification-images">
+                            <h3>Visual Identification</h3>
+                            <div class="image-grid">
+                                <div class="id-image">
+                                    <img src="https://via.placeholder.com/300x200?text=Symptom+1" alt="Symptom 1">
+                                    <p>Early stage symptoms</p>
+                                </div>
+                                <div class="id-image">
+                                    <img src="https://via.placeholder.com/300x200?text=Symptom+2" alt="Symptom 2">
+                                    <p>Advanced stage symptoms</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="management">
+                        <h2>Management Strategies</h2>
+                        
+                        <div class="management-section">
+                            <h3>Prevention</h3>
+                            <ul>
+                                <li>Prevention method 1</li>
+                                <li>Prevention method 2</li>
+                                <li>Prevention method 3</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="management-section">
+                            <h3>Cultural Controls</h3>
+                            <ul>
+                                <li>Cultural control method 1</li>
+                                <li>Cultural control method 2</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="management-section">
+                            <h3>Chemical Controls</h3>
+                            <ul>

@@ -1,0 +1,363 @@
+<!-- app_pests/templates/app_pests/about.html -->
+{% extends "app_pests/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="about-page">
+    <section class="about-hero">
+        <h1>About Mango Surveillance</h1>
+        <p class="lead">Dedicated to protecting mango crops through education, research, and community engagement</p>
+    </section>
+
+    <section class="about-mission">
+        <div class="mission-content">
+            <div class="mission-text">
+                <h2>Our Mission</h2>
+                <p>At Mango Surveillance, we're committed to supporting mango growers by providing accurate, accessible information about pests and diseases that affect mango crops. Our mission is to empower farmers with knowledge that helps them implement effective prevention and management strategies for healthier, more productive harvests.</p>
+                <p>We believe that through education and awareness, we can contribute to sustainable farming practices and food security in mango-growing regions around the world.</p>
+            </div>
+            <div class="mission-image">
+                <img src="{% static 'app_pests/images/mission.jpg' %}" alt="Mango orchard" onerror="this.src='https://via.placeholder.com/500x300?text=Our+Mission'">
+            </div>
+        </div>
+    </section>
+
+    <section class="about-team">
+        <h2>Meet Our Team</h2>
+        <p>Our dedicated team brings together expertise in entomology, plant pathology, agriculture, and technology to provide you with the most accurate and practical information.</p>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="{% static 'app_pests/images/team/subodh.jpg' %}" alt="Subodh Gautam" onerror="this.src='https://via.placeholder.com/200x200?text=SG'">
+                </div>
+                <h3>Subodh Gautam</h3>
+                <p class="member-role">Project Lead & Entomologist</p>
+                <p>With over 10 years of experience in agricultural pest management, Subodh leads our research initiatives and content development.</p>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="{% static 'app_pests/images/team/sagar.jpg' %}" alt="Sagar" onerror="this.src='https://via.placeholder.com/200x200?text=S'">
+                </div>
+                <h3>Sagar</h3>
+                <p class="member-role">Plant Pathologist</p>
+                <p>Specializing in fungal and bacterial diseases affecting mangoes, Sagar contributes expert knowledge on disease identification and management.</p>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="{% static 'app_pests/images/team/anjana.jpg' %}" alt="Anjana" onerror="this.src='https://via.placeholder.com/200x200?text=A'">
+                </div>
+                <h3>Anjana</h3>
+                <p class="member-role">Agricultural Extension Specialist</p>
+                <p>Anjana bridges the gap between scientific research and practical application, ensuring our content addresses real-world challenges faced by growers.</p>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="{% static 'app_pests/images/team/manish.jpg' %}" alt="Manish Singh Basnyat" onerror="this.src='https://via.placeholder.com/200x200?text=MB'">
+                </div>
+                <h3>Manish Singh Basnyat</h3>
+                <p class="member-role">Technology & Documentation Specialist</p>
+                <p>Manish ensures our information is accessible through user-friendly digital platforms and comprehensive documentation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-approach">
+        <h2>Our Approach</h2>
+        
+        <div class="approach-grid">
+            <div class="approach-card">
+                <div class="card-icon">
+                    <i class="fas fa-microscope"></i>
+                </div>
+                <h3>Research-Based</h3>
+                <p>All information provided on our platform is based on scientific research and field-tested methods, ensuring reliability and effectiveness.</p>
+            </div>
+            
+            <div class="approach-card">
+                <div class="card-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Sustainability Focused</h3>
+                <p>We prioritize management approaches that consider environmental impact, promoting sustainable farming practices wherever possible.</p>
+            </div>
+            
+            <div class="approach-card">
+                <div class="card-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Community Oriented</h3>
+                <p>We engage with the farming community to understand challenges and share solutions, creating a collaborative knowledge ecosystem.</p>
+            </div>
+            
+            <div class="approach-card">
+                <div class="card-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>Regularly Updated</h3>
+                <p>Pest and disease management is an evolving field. We continually update our resources to reflect the latest findings and best practices.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-partners">
+        <h2>Our Partners</h2>
+        <p>We collaborate with leading agricultural institutions, research centers, and industry associations to ensure the quality and relevance of our content.</p>
+        
+        <div class="partners-grid">
+            <div class="partner">
+                <img src="https://via.placeholder.com/200x100?text=Partner+1" alt="Agricultural University">
+            </div>
+            <div class="partner">
+                <img src="https://via.placeholder.com/200x100?text=Partner+2" alt="Research Institute">
+            </div>
+            <div class="partner">
+                <img src="https://via.placeholder.com/200x100?text=Partner+3" alt="Growers Association">
+            </div>
+            <div class="partner">
+                <img src="https://via.placeholder.com/200x100?text=Partner+4" alt="Agricultural Extension">
+            </div>
+        </div>
+    </section>
+
+    <section class="about-contact">
+        <h2>Get In Touch</h2>
+        <p>Have questions or suggestions? We'd love to hear from you. Reach out to our team using the contact information below or through our contact form.</p>
+        
+        <div class="contact-options">
+            <div class="contact-option">
+                <i class="fas fa-envelope"></i>
+                <h3>Email Us</h3>
+                <p>info@mangosurveillance.org</p>
+            </div>
+            
+            <div class="contact-option">
+                <i class="fas fa-phone"></i>
+                <h3>Call Us</h3>
+                <p>+1 (555) 123-4567</p>
+            </div>
+            
+            <div class="contact-option">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Visit Us</h3>
+                <p>123 Orchard Lane<br>Mango Heights, MG 12345</p>
+            </div>
+        </div>
+        
+        <div class="cta-button">
+            <a href="{% url 'home' %}#contact" class="btn">Contact Form</a>
+        </div>
+    </section>
+</div>
+
+<style>
+/* About page specific styles */
+.about-page {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-hero {
+    text-align: center;
+    padding: 2rem 0 3rem;
+}
+
+.about-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.lead {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-mission {
+    margin: 3rem 0;
+    padding: 3rem;
+    background-color: #f9f9f9;
+    border-radius: var(--border-radius);
+}
+
+.mission-content {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.mission-image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.about-team {
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.team-member {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+.member-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1.5rem;
+    border: 5px solid var(--primary-color);
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.member-role {
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.about-approach {
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.approach-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.approach-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.about-partners {
+    margin: 4rem 0;
+    text-align: center;
+    padding: 3rem;
+    background-color: #f9f9f9;
+    border-radius: var(--border-radius);
+}
+
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    align-items: center;
+}
+
+.partner {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.partner img {
+    max-width: 100%;
+    height: auto;
+}
+
+.about-contact {
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.contact-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.contact-option {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.contact-option:hover {
+    transform: translateY(-5px);
+}
+
+.contact-option i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.cta-button {
+    margin-top: 3rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .mission-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .mission-image {
+        order: -1;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-mission {
+        padding: 2rem;
+    }
+    
+    .team-grid, 
+    .approach-grid, 
+    .partners-grid, 
+    .contact-options {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}

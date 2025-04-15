@@ -1,0 +1,209 @@
+<!-- app_pests/templates/app_pests/pests_list.html -->
+{% extends "app_pests/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="pest-library">
+    <div class="library-header">
+        <h1>Mango Pest & Disease Library</h1>
+        <p>Comprehensive information on common pests and diseases affecting mango crops</p>
+        
+        <div class="search-filter">
+            <div class="search-box">
+                <input type="text" id="pest-search" placeholder="Search pests..." onkeyup="filterPests()">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="filter-options">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="insect">Insects</button>
+                <button class="filter-btn" data-filter="disease">Diseases</button>
+            </div>
+        </div>
+    </div>
+
+    <ul class="pest-list" id="pest-list">
+        {% for pest in pests %}
+            <li class="pest-item" data-name="{{ pest.name|lower }}" data-type="{% if 'disease' in pest.name|lower %}disease{% else %}insect{% endif %}">
+                <div class="pest-card">
+                    <div class="pest-image">
+                        {% if pest.image_url %}
+                        
+                        <img src="{% static 'images/Mango_Anthracnose.webp' %}" alt="Mango_Anthracnose">
+
+                        {% else %}
+                            <img src="https://via.placeholder.com/300x200?text={{ pest.name }}" alt="{{ pest.name }}">
+                        {% endif %}
+                    </div>
+                    <div class="pest-content">
+                        <h3>{{ pest.name }}</h3>
+                        <p>{{ pest.description }}</p>
+                        <div class="pest-details">
+                            <p><strong>Affected Parts:</strong> {{ pest.affected_parts }}</p>
+                            <a href="{% url 'pest_detail' id=forloop.counter %}" class="btn btn-sm">View Details</a>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {% empty %}
+            <div class="no-results">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>No pests or diseases found. Please check back later.</p>
+            </div>
+        {% endfor %}
+    </ul>
+</div>
+
+<style>
+.pest-library {
+    margin-bottom: 3rem;
+}
+
+.library-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.search-filter {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 20px;
+    padding-right: 50px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 1rem;
+}
+
+.search-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+}
+
+.filter-options {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    background: #f1f1f1;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.pest-item {
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.pest-card {
+    display: flex;
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.pest-image {
+    flex: 0 0 300px;
+}
+
+.pest-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pest-content {
+    padding: 1.5rem;
+    flex: 1;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+}
+
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.no-results i {
+    font-size: 3rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .pest-card {
+        flex-direction: column;
+    }
+    
+    .pest-image {
+        height: 200px;
+    }
+}
+</style>
+
+<script>
+    // Filter functionality
+    function filterPests() {
+        const searchTerm = document.getElementById('pest-search').value.toLowerCase();
+        const items = document.querySelectorAll('.pest-item');
+        const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+        
+        items.forEach(item => {
+            const name = item.dataset.name;
+            const type = item.dataset.type;
+            
+            // Check if item matches search term and active filter
+            const matchesSearch = name.includes(searchTerm);
+            const matchesFilter = activeFilter === 'all' || type === activeFilter;
+            
+            if (matchesSearch && matchesFilter) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+    
+    // Filter button functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            filterPests();
+        });
+    });
+</script>
+{% endblock %}
