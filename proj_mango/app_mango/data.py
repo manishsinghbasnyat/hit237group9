@@ -65,3 +65,4 @@ disease1=DiseaseInfo(
     
     
     )
+disease_list = [disease1,]
