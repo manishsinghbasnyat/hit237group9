@@ -19,37 +19,69 @@ image_url                # Link or path to an image of the pest"""
 
 pest1 = PestInfo(
     pest_id=1,
-    common_name="Aphid",
-    scientific_name="Aphis spp.",
-    family="Aphididae",
-    description="Aphids are small sap-sucking insects that damage plants in the nymph and adult stages.",
-    life_cycle="Egg > Nymph > Adult. Life cycle is completed in 7-14 days.",
-    damage_description="Aphids cause deformed growth, yellowing of leaves, and can transmit plant viruses.",
-    importance="Aphids are a significant pest for many crops, including vegetables and fruits.",
-    hosts="Cabbage, Lettuce, Roses, Peas, and many other plants.",
-    critical_control_period="Spring and early summer when populations explode.",
-    monitoring="Regular inspection of leaves, especially on the underside for colonies.",
-    comments="Aphids are known for their rapid reproduction and ability to cause major crop loss if not controlled.",
-    image_url="images/aphid.jpg"
+    common_name="Mango seed weevil",
+    scientific_name="Sternochetus mangiferae",
+    family="Curculionidae",
+    description="Eggs: creamy white, elongate; Larvae: white, legless with brown head; Adults: dark brown to grey-black with a snout.",
+    life_cycle="One generation per year. Development from egg to adult ~53 days. Eggs laid on fruit, larvae feed inside seed.",
+    damage_description="Damage is only to the seed, with sap exudate at egg laying; external symptoms not visible at harvest.",
+    importance="Quarantine pest; significant in trade regulation.",
+    hosts="Mangoes",
+    critical_control_period="Pre-flowering and post-fruit set",
+    monitoring="Inspect young fruit for egg scars and random fruit samples for larval presence in seeds.",
+    comments="Remove fallen fruit to reduce populations.",
+    image_url=""
 )
 
 pest2 = PestInfo(
     pest_id=2,
-    common_name="Whitefly",
-    scientific_name="Bemisia tabaci",
-    family="Aleyrodidae",
-    description="Whiteflies are tiny, winged insects that suck sap from the undersides of leaves.",
-    life_cycle="Egg > Nymph > Adult. Can complete a cycle in 2-3 weeks.",
-    damage_description="Whiteflies cause yellowing, leaf drop, and black sooty mold from excreted honeydew.",
-    importance="Whiteflies are known for causing severe damage to crops and transmitting plant diseases.",
-    hosts="Tomato, Cucumber, Cotton, Eggplant.",
-    critical_control_period="During the growing season when environmental conditions favor rapid breeding.",
-    monitoring="Use yellow sticky traps to monitor adult whitefly populations.",
-    comments="Whiteflies are resistant to many pesticides, so integrated pest management is critical.",
-    image_url="images/whitefly.jpg"
+    common_name="Mango seed weevil",
+    scientific_name="Sternochetus mangiferae",
+    family="Coreidae",
+    description="Eggs: pale green, oval; Nymphs: tear-drop shaped with red and black patterns; Adults: green with brown back.",
+    life_cycle="Egg to adult: 35-42 days; 4-5 generations/year; eggs laid singly on young shoots.",
+    damage_description="Lesions and cracks on shoots and young fruit; fruit drop and internal cavities in mature fruit.",
+    importance="High; causes significant fruit loss.",
+    hosts="Mango and other tropical fruits",
+    critical_control_period="Flushing to fruit development",
+    monitoring="Inspect young fruit for egg scars and random fruit samples for larval presence in seeds.",
+    comments="Difficult to find; causes internal damage.",
+    image_url=""
 )
 
-pest_list = [pest1, pest2]
+pest3 = PestInfo(
+    pest_id=3,
+    common_name="Mango fruit borer",
+    scientific_name="Citripestis eutraphera",
+    family="Pyralidae",
+    description="Eggs: white, turn red in a day; Larvae: pale pink to red brown with dark head; Adults: dark brown forewings.",
+    life_cycle="Egg to adult ~30 days; larvae pupate after 14 days feeding, adults live ~10 days.",
+    damage_description="Frass around fruit stem; larvae tunnel into fruit, damaging flesh.",
+    importance="High; affects fruit marketability.",
+    hosts="Mango",
+    critical_control_period="Fruit development stage",
+    monitoring="Inspect fruit on tree and fallen fruit for frass and holes.",
+    comments="More common in the Northern Territory.",
+    image_url=""
+)
+
+pest4 = PestInfo(
+    pest_id=4,
+    common_name="Tea mosquito bug",
+    scientific_name="Helopeltis pernicialis",
+    family="Miridae",
+    description="Eggs: elongate; Nymphs: pale golden-brown; Adults: dark red/brown with orange thorax and long legs.",
+    life_cycle="Egg to adult: 15-30 days. Eggs laid in stems and petioles.",
+    damage_description="Black necrotic lesions on shoots and fruit; corky depressions on fruit.",
+    importance="Moderate to high; impacts fruit quality.",
+    hosts="Mango",
+    critical_control_period="Late wet season to harvest",
+    monitoring="Check new flush and fruit for spotting damage.",
+    comments="Prefers dense canopies; rarely seen directly.",
+    image_url="image_path_or_url_here"
+)
+
+pest_list = [pest1,]
 
 
 # -- Adding Diseases -- #
