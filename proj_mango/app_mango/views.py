@@ -13,8 +13,8 @@ def home(request):
 
 def pest_list_view(request):
     context = {
-        'pests': pest_list,
-        'diseases': disease_list
+        'pests': pests,
+        'diseases': diseases
     }
     return render(request, 'app_mango/pest_list.html', context) # for pest/disease list
 
