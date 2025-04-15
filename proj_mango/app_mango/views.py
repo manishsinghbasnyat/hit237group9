@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from models import PestInfo, DiseaseInfo
 from data import pests, diseases
+from django.http import HttpResponseNotFound
 
 # Create your views here.
 
@@ -8,14 +9,14 @@ from data import pests, diseases
 from .data import pest_list, disease_list
 
 def home(request):
-    return render(request, 'app_mango/home.html')
+    return render(request, 'app_mango/home.html') # For home page
 
 def pest_list_view(request):
     context = {
         'pests': pest_list,
         'diseases': disease_list
     }
-    return render(request, 'app_mango/pest_list.html', context)
+    return render(request, 'app_mango/pest_list.html', context) # for pest/disease list
 
 
 def pest_detail_view(request, item_id):
@@ -23,7 +24,7 @@ def pest_detail_view(request, item_id):
     if item is None:
         item = next((d for d in disease_list if d.id == item_id), None)
     if item is None:
-        return render(request, 'app_mango/404.html')  # Or use Django's default 404
+        return HttpResponseNotFound("Page not Found") # Displays 404 page
     return render(request, 'app_mango/pest_detail.html', {'item': item})
 
 def about(request):
