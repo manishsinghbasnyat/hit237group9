@@ -2,7 +2,7 @@ from models import PestInfo, DiseaseInfo
 
 # -- Adding Pests -- #
 """
-pest_id,                  # Unique identifier for each pest (e.g., pest1, pest2)
+pest_id,                 # Unique identifier for each pest (e.g., pest1, pest2)
 common_name,             # Common name of the pest
 scientific_name,         # Scientific name of the pest
 family,                  # Family classification of the pest
@@ -144,5 +144,5 @@ disease3 = DiseaseInfo(
     control_strategies="Preventative copper fungicides.",
     life_cycle="Spores form on lesions in wet weather; dispersed by wind and rain.",
     impact="Causes fruit blemishes and drop, reducing marketability.",
-    image_url="image_path_or_url_here"
+    image_url=""
 )
