@@ -20,8 +20,8 @@ pest1 = PestInfo (
 # -- Adding Diseases -- #
 disease1 = DiseaseInfo(
     id=1,
-    name="Disease1"
-    short_description="short_description"
-    long_description="Long_description"
+    name="Disease1",
+    short_description="short_description",
+    long_description="Long_description",
     image_url=""
 )
