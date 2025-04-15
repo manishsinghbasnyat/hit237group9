@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from models import PestInfo, DiseaseInfo
 from data import pests, diseases
 from django.http import HttpResponseNotFound
 
