@@ -64,8 +64,21 @@ pest3 = PestInfo(
     image_url=""
 )
 
-
-
+pest4 = PestInfo(
+    pest_id=4,
+    common_name="Tea mosquito bug"
+    scientific_name="Helopeltis pernicialis",
+    family="Miridae",
+    description="Eggs: elongate; Nymphs: pale golden-brown; Adults: dark red/brown with orange thorax and long legs.",
+    life_cycle="Egg to adult: 15-30 days. Eggs laid in stems and petioles.",
+    damage_description="Black necrotic lesions on shoots and fruit; corky depressions on fruit.",
+    importance="Moderate to high; impacts fruit quality.",
+    hosts="Mango",
+    critical_control_period="Late wet season to harvest",
+    monitoring="Check new flush and fruit for spotting damage.",
+    comments="Prefers dense canopies; rarely seen directly.",
+    image_url="image_path_or_url_here"
+)
 
 pest_list = [pest1,]
 
@@ -93,6 +106,7 @@ disease1=DiseaseInfo(
     disease_id=1,
     common_name="",
     scientific_name="",
+    type=""
     
     
     )
