@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from models import PestInfo, DiseaseInfo
+from .models import PestInfo, DiseaseInfo
 from .data import pest_list, disease_list
 from django.http import HttpResponseNotFound
 
@@ -18,17 +18,14 @@ def pest_disease_list(request):
     })
 
 
-# Pest Detail View
 def pest_detail(request, pest_id):
-    pest = next((p for p in pest_list if p["id"] == pest_id), None)
+    pest = next((p for p in pest_list if p.pest_id == pest_id), None)
     if pest is None:
-        return HttpResponseNotFound("Page not found.")
+        return HttpResponseNotFound("Pest not found.")
     return render(request, 'app_mango/pest_detail.html', {'pest': pest})
 
-
-# Disease Detail View
 def disease_detail(request, disease_id):
-    disease = next((d for d in disease_list if d["id"] == disease_id), None)
+    disease = next((d for d in disease_list if d.disease_id == disease_id), None)
     if disease is None:
         return HttpResponseNotFound("Disease not found.")
     return render(request, 'app_mango/disease_detail.html', {'disease': disease})
@@ -37,3 +34,5 @@ def disease_detail(request, disease_id):
 # About Page View
 def about(request):
     return render(request, 'app_mango/about.html')
+
+

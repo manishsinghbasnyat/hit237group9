@@ -32,10 +32,10 @@ urlpatterns = [
     path('pests-diseases/', views.pest_disease_list, name='pest_disease_list'),
 
     # Pest Detail URL (Dynamic URL based on pest_id)
-    path('pests/<int:pest_id>/', views.pest_detail, name='pest_detail'),
+    path('detail/pest/<int:pest_id>/', views.pest_detail, name='pest_detail'),
 
     # Disease Detail URL (Dynamic URL based on disease_id)
-    path('diseases/<int:disease_id>/', views.disease_detail, name='disease_detail'),
+    path('detail/disease/<int:disease_id>/', views.disease_detail, name='disease_detail'),
 
     # About Page URL
     path('about/', views.about, name='about'),

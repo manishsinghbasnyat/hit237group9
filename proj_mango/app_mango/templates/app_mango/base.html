@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mango Pests & Diseases{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <!-- Home Page Link -->
+                <li><a href="{% url 'home' %}">Home</a></li>
+                
+                <!-- Pest & Disease List Link -->
+                <li><a href="{% url 'pest_disease_list' %}">Pest & Disease List</a></li>
+
+                <!-- Pest Detail Links (Loop through pest list and create dynamic links) -->
+                {% for pest in pest_list %}
+                    <li><a href="{% url 'pest_detail' pest_id=pest.id %}">{{ pest.name }}</a></li>
+                {% endfor %}
+
+                <!-- Disease Detail Links (Loop through disease list and create dynamic links) -->
+                {% for disease in disease_list %}
+                    <li><a href="{% url 'disease_detail' disease_id=disease.id %}">{{ disease.name }}</a></li>
+                {% endfor %}
+
+                <!-- About Page Link -->
+                <li><a href="{% url 'about' %}">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1>Pest & Disease List</h1>
+        
+        <h2>Pests</h2>
+        <div class="pests-list">
+            {% for pest in pest_list %}
+                <div class="pest-card">
+                    <h3>{{ pest.common_name }}</h3>
+                    <img src="{{ pest.image_url }}" alt="{{ pest.common_name }} Image" class="pest-image">
+                    <p><strong>Scientific Name:</strong> {{ pest.scientific_name }}</p>
+                    <p><strong>Family:</strong> {{ pest.family }}</p>
+                    <p><strong>Description:</strong> {{ pest.description }}</p>
+                    <p><strong>Hosts:</strong> {{ pest.hosts }}</p>
+                    <a href="{% url 'pest_detail' pest_id=pest.pest_id %}">View Details</a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <h2>Diseases</h2>
+        <div class="diseases-list">
+            {% for disease in disease_list %}
+                <div class="disease-card">
+                    <h3>{{ disease.common_name }}</h3>
+                    <img src="{{ disease.image_url }}" alt="{{ disease.common_name }} Image" class="disease-image">
+                    <p><strong>Scientific Name:</strong> {{ disease.scientific_name }}</p>
+                    <p><strong>Type:</strong> {{ disease.type }}</p>
+                    <p><strong>Symptoms:</strong> {{ disease.symptoms }}</p>
+                    <p><strong>Distribution:</strong> {{ disease.distribution }}</p>
+                    <a href="{% url 'disease_detail' disease_id=disease.disease_id %}">View Details</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

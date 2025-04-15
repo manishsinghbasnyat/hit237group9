@@ -1,0 +1,19 @@
+{% extends 'app_mango/base.html' %}
+
+{% block content %}
+    <section>
+        <h1>Welcome to Mango Pests & Diseases</h1>
+        <p>This website provides an overview of the various pests and diseases that affect mango plants. Here, you will find detailed information about each pest and disease, including their characteristics, symptoms, and management methods.</p>
+    </section>
+
+    <section>
+        <h2>Overview</h2>
+        <p>Mangoes are susceptible to a variety of pests and diseases that can impact their growth, yield, and quality. It's crucial for farmers, horticulturists, and enthusiasts to recognize and manage these problems effectively.</p>
+
+        <ul>
+            <li><a href="{% url 'pest_disease_list' %}">Explore the list of pests and diseases</a></li>
+            <li><a href="{% url 'pest_detail' %}">Learn more about specific pests</a></li>
+            <li><a href="{% url 'disease_detail' %}">Learn more about specific diseases</a></li>
+        </ul>
+    </section>
+{% endblock %}
