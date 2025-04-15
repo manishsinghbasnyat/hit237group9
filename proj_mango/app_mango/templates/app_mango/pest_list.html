@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mango Pests</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Mango Pests</h1>
+    </header>
+    <section class="pest-container">
+        {% for pest in pests %}
+            <div class="pest-card">
+                <img src="{% static pest.image_url %}" alt="{{ pest.name }}">
+                <h2>{{ pest.name }}</h2>
+                <p><strong>Short Description:</strong> {{ pest.short_description }}</p>
+                <p><strong>Long Description:</strong> {{ pest.long_description }}</p>
+            </div>
+        {% endfor %}
+    </section>
+</body>
+</html>

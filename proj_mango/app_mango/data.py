@@ -1,8 +1,8 @@
-from models import PestInfo, DiseaseInfo
+from .models import PestInfo, DiseaseInfo
 
 # -- Adding Pests -- #
 
-pests = [
+pest_list = [
     PestInfo(
         id=1,
         name="Fruit Fly",
@@ -27,7 +27,7 @@ pests = [
 
 # -- Adding Diseases -- #
 
-diseases = [
+disease_list = [
     
 DiseaseInfo(
         id=1,

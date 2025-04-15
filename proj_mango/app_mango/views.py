@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from data import pests, diseases
+from .data import pest_list, disease_list
 from django.http import HttpResponseNotFound
 
 # Create your views here.
@@ -12,8 +12,8 @@ def home(request):
 
 def pest_list_view(request):
     context = {
-        'pests': pests,
-        'diseases': diseases
+        'pests': pest_list,
+        'diseases': disease_list
     }
     return render(request, 'app_mango/pest_list.html', context) # for pest/disease list
 
