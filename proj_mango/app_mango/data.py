@@ -102,11 +102,47 @@ image_url            # URL or path to an image of the disease
 
 """
 
-disease1=DiseaseInfo(
+disease1 = DiseaseInfo(
     disease_id=1,
-    common_name="",
-    scientific_name="",
-    type=""
-    
-    
-    )
+    common_name="Anthracnose",
+    scientific_name="Colletotrichum gloeosporioides",
+    type="Fungal",
+    symptoms="Black spots on leaves, flower blight, fruit lesions with orange-pink spore masses, tear stains on fruit.",
+    distribution="All mango growing regions in Australia; less significant in Katherine.",
+    favoured_by="Rain, fog, high humidity, poor pruning and orchard hygiene.",
+    similar_to="Thrips, oedema, nutritional disorders (calcium).",
+    control_strategies="Pruning, orchard hygiene, fungicides (mancozeb, copper, strobilurins).",
+    life_cycle="Spores germinate in moist conditions. Latent infections in fruit activate during ripening.",
+    impact="Most important fungal disease of mango; can severely reduce yield and marketability.",
+    image_url=""
+)
+
+isease2 = DiseaseInfo(
+    disease_id=2,
+    common_name="Powdery mildew",
+    scientific_name="Oidium mangiferae",
+    type="Fungal",
+    symptoms="White powdery growth on leaves, flowers and fruit; blackened panicles; fruit drop.",
+    distribution="All regions; more common in Queensland.",
+    favoured_by="Cool, dry weather interrupted by humidity.",
+    similar_to="Bacterial black spot.",
+    control_strategies="Broad-spectrum fungicides; varies by cultivar susceptibility.",
+    life_cycle="Spores spread by wind; produced within infected tissue.",
+    impact="Affects flowering and fruit set; can be significant in susceptible varieties.",
+    image_url=""
+)
+
+disease3 = DiseaseInfo(
+    disease_id=3,
+    common_name="Mango scab",
+    scientific_name="Elsinoë mangiferae",
+    type="Fungal",
+    symptoms="Dark brown scabs on fruit; distorted leaf margins; raised lesions on stems.",
+    distribution="All regions; less significant in Katherine.",
+    favoured_by="Rain and high humidity during flowering and flush.",
+    similar_to="Spray or insect injury, lenticel spotting.",
+    control_strategies="Preventative copper fungicides.",
+    life_cycle="Spores form on lesions in wet weather; dispersed by wind and rain.",
+    impact="Causes fruit blemishes and drop, reducing marketability.",
+    image_url="image_path_or_url_here"
+)
