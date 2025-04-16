@@ -62,7 +62,7 @@ pest3 = PestInfo(
     critical_control_period="Fruit development stage",
     monitoring="Inspect fruit on tree and fallen fruit for frass and holes.",
     comments="More common in the Northern Territory.",
-    image_url="images/Mango Fruit Borer.jpeg"
+    image_url="images/Mango Fruit Borer.webp"
 )
 
 pest4 = PestInfo(
@@ -78,7 +78,7 @@ pest4 = PestInfo(
     critical_control_period="Late wet season to harvest",
     monitoring="Check new flush and fruit for spotting damage.",
     comments="Prefers dense canopies; rarely seen directly.",
-    image_url="images/Tea mosquito bug.webp"
+    image_url="images/Tea mosquito bug.jpeg"
 )
 
 pest_list = [pest1, pest2, pest3, pest4] 
