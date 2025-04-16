@@ -6,23 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>References - Mango Pest & Disease Guide</title>
     <link rel="stylesheet" href="{% static 'app_mango/css/style.css' %}">
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        main {
-            flex-grow: 1;
-        }
-        ul {
-            list-style-type: disc;
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -40,49 +23,58 @@
     </header>
 
     <main class="container references-page">
-        <h1>References</h1>
+        <h1 class="references">References</h1>
 
-        <p>This page lists the references used in creating the Mango Pest & Disease Guide. Please visit the links below for more detailed information:</p>
+        
+        <section class="reference-section">
+            <p>This page lists the references used in creating the Mango Pest & Disease Guide. Please visit the links below for more detailed information:</p>
 
-        <h2>Pests</h2>
-        <ul>
-            <li><strong>Mango Seed Weevil</strong>: 
-                <a href="https://plantwiseplusknowledgebank.org/cms/10.1079/pwkb.species.16434/asset/d5a55f70-af05-47fe-81ff-6f7076a425f6/assets/graphic/stern_ma.jpg" target="_blank">Image</a>
-            </li>
-            <li><strong>Fruitspotting Bug</strong>: 
-                <a href="https://live.staticflickr.com/6021/5935629369_8dcee15372_b.jpg" target="_blank">Image</a>
-            </li>
-            <li><strong>Mango Fruit Borer (Deanolis albizonalis)</strong>: 
-                <a href="https://thumbs.dreamstime.com/b/fruit-borer-mango-deanolis-albizonalis-attack-viet-nam-186224056.jpg" target="_blank">Image</a>
-            </li>
-            <li><strong>Tea Mosquito Bug (Helopeltis theivora)</strong>: 
-                <a href="https://thumbs.dreamstime.com/z/helopeltis-theivora-waterhouse-pest-tea-emerging-as-commonly-occurring-major-pest-guava-recent-times-tea-mosquito-212252415.jpg" target="_blank">Image</a>
-            </li>
-        </ul>
+            <h2>Pests</h2>
+            <ul class="reference-list">
+                <li><strong>Mango Seed Weevil</strong>: 
+                    <a href="https://plantwiseplusknowledgebank.org/cms/10.1079/pwkb.species.16434/asset/d5a55f70-af05-47fe-81ff-6f7076a425f6/assets/graphic/stern_ma.jpg" target="_blank">Image</a>
+                </li>
+                <li><strong>Fruitspotting Bug</strong>: 
+                    <a href="https://live.staticflickr.com/6021/5935629369_8dcee15372_b.jpg" target="_blank">Image</a>
+                </li>
+                <li><strong>Mango Fruit Borer (Deanolis albizonalis)</strong>: 
+                    <a href="https://thumbs.dreamstime.com/b/fruit-borer-mango-deanolis-albizonalis-attack-viet-nam-186224056.jpg" target="_blank">Image</a>
+                </li>
+                <li><strong>Tea Mosquito Bug (Helopeltis theivora)</strong>: 
+                    <a href="https://thumbs.dreamstime.com/z/helopeltis-theivora-waterhouse-pest-tea-emerging-as-commonly-occurring-major-pest-guava-recent-times-tea-mosquito-212252415.jpg" target="_blank">Image</a>
+                </li>
+            </ul>
+        </section>
 
-        <h2>Diseases</h2>
-        <ul>
-            <li><strong>Anthracnose (Colletotrichum gloeosporioides)</strong>: 
-                <a href="https://www.bing.com/images/search?view=detailV2&ccid=%2BQVdFoAE&id=033C6AE673255CFC9B02B31FC605E2BA9C2CCCCA&thid=OIP.-QVdFoAEYEnV9R0sW1_toAHaEv&mediaurl=https%3A%2F%2Fth.bing.com%2Fth%2Fid%2FR.f9055d1680046049d5f51d2c5b5feda0%3Frik%3DyswsnLriBcYfsw%26riu%3Dhttp%253a%252f%252fwww.spchcmc.vn%252fCMS%252fDoctors%252fDoImage%252fBENHTHANTHUHAICAY.jpg%26ehk%3DjNzbhhycua5TZy%252f6Epa8%252fZpwQJk3JpXCiiglMnyNhrs%253d%26risl%3D%26pid%3DImgRaw%26r%3D0" target="_blank">Image</a>
-            </li>
-            <li><strong>Powdery Mildew (Oidium mangiferae)</strong>: 
-                <a href="https://en.wikipedia.org/wiki/Oidium_mangiferae#/media/File:Mango_powdery_mildew_severe_leaf_blight_with_mycelium_1.jpg" target="_blank">Image</a>
-            </li>
-            <li><strong>Mango Scab (Elsinoë mangiferae)</strong>: 
-                <a href="https://pestsdiseases.com/wp-content/uploads/Mango-Scab-Disease-Management-1.jpg" target="_blank">Image</a>
-            </li>
-        </ul>
+        <section class="reference-section">
+            <h2>Diseases</h2>
+            <ul class="reference-list">
+                <li><strong>Anthracnose (Colletotrichum gloeosporioides)</strong>: 
+                    <a href="https://www.bing.com/images/search?view=detailV2&ccid=%2BQVdFoAE&id=033C6AE673255CFC9B02B31FC605E2BA9C2CCCCA&thid=OIP.-QVdFoAEYEnV9R0sW1_toAHaEv&mediaurl=https%3A%2F%2Fth.bing.com%2Fth%2Fid%2FR.f9055d1680046049d5f51d2c5b5feda0%3Frik%3DyswsnLriBcYfsw%26riu%3Dhttp%253a%252f%252fwww.spchcmc.vn%252fCMS%252fDoctors%252fDoImage%252fBENHTHANTHUHAICAY.jpg%26ehk%3DjNzbhhycua5TZy%252f6Epa8%252fZpwQJk3JpXCiiglMnyNhrs%253d%26risl%3D%26pid%3DImgRaw%26r%3D0" target="_blank">Image</a>
+                </li>
+                <li><strong>Powdery Mildew (Oidium mangiferae)</strong>: 
+                    <a href="https://en.wikipedia.org/wiki/Oidium_mangiferae#/media/File:Mango_powdery_mildew_severe_leaf_blight_with_mycelium_1.jpg" target="_blank">Image</a>
+                </li>
+                <li><strong>Mango Scab (Elsinoë mangiferae)</strong>: 
+                    <a href="https://pestsdiseases.com/wp-content/uploads/Mango-Scab-Disease-Management-1.jpg" target="_blank">Image</a>
+                </li>
+            </ul>
+        </section>
 
-        <h2>Files</h2>
-        <ul>
-            <li><a href="https://daf.nt.gov.au/__data/assets/pdf_file/0007/1380742/mango-field-guide-part-1.pdf" target="_blank">Mango Field Guide - Part 1 (PDF)</a></li>
-            <li><a href="https://daf.nt.gov.au/__data/assets/pdf_file/0010/1380745/mango-field-guide-part-3.pdf" target="_blank">Mango Field Guide - Part 3 (PDF)</a></li>
-        </ul>
+        <section class="reference-section">
+            <h2>Files</h2>
+            <ul class="reference-list">
+                <li><a href="https://daf.nt.gov.au/__data/assets/pdf_file/0007/1380742/mango-field-guide-part-1.pdf" target="_blank">Mango Field Guide - Part 1 (PDF)</a></li>
+                <li><a href="https://daf.nt.gov.au/__data/assets/pdf_file/0010/1380745/mango-field-guide-part-3.pdf" target="_blank">Mango Field Guide - Part 3 (PDF)</a></li>
+            </ul>
+        </section>
 
-        <h2>Websites</h2>
-        <ul>
-            <li><a href="https://pestinfo.nt.gov.au/" target="_blank">Northern Territory Pest Info Portal</a></li>
-        </ul>
+        <section class="reference-section">
+            <h2>Websites</h2>
+            <ul class="reference-list">
+                <li><a href="https://pestinfo.nt.gov.au/" target="_blank">Northern Territory Pest Info Portal</a></li>
+            </ul>
+        </section>
 
     </main>
 
