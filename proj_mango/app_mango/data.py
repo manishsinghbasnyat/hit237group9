@@ -102,7 +102,6 @@ impact,              # Effects on plant health/yield (optional)
 image_url            # URL or path to an image of the disease
 
 """
-
 disease1 = DiseaseInfo(
     disease_id=1,
     common_name="Anthracnose",
@@ -115,7 +114,7 @@ disease1 = DiseaseInfo(
     control_strategies="Pruning, orchard hygiene, fungicides (mancozeb, copper, strobilurins).",
     life_cycle="Spores germinate in moist conditions. Latent infections in fruit activate during ripening.",
     impact="Most important fungal disease of mango; can severely reduce yield and marketability.",
-    image_url="image/Anthracnose.webp"
+    image_url="images/Anthracnose.webp"
 )
 
 disease2 = DiseaseInfo(  
@@ -130,7 +129,7 @@ disease2 = DiseaseInfo(
     control_strategies="Broad-spectrum fungicides; varies by cultivar susceptibility.",
     life_cycle="Spores spread by wind; produced within infected tissue.",
     impact="Affects flowering and fruit set; can be significant in susceptible varieties.",
-    image_url="image/Powdery mildew.jpg"
+    image_url="images/Powdery mildew.jpg"
 )
 
 disease3 = DiseaseInfo(
@@ -145,7 +144,7 @@ disease3 = DiseaseInfo(
     control_strategies="Preventative copper fungicides.",
     life_cycle="Spores form on lesions in wet weather; dispersed by wind and rain.",
     impact="Causes fruit blemishes and drop, reducing marketability.",
-    image_url="Powdery mildew.jpg"
+    image_url="images/Mango scab.jpg"
 )
 
 disease_list = [disease1, disease2, disease3]
