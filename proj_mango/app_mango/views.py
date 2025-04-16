@@ -19,12 +19,12 @@ def pest_list_view(request):
 
 
 def pest_detail_view(request, item_id):
-    item = next((p for p in pest_list if p.id == item_id), None)
+    item = next((p for p in pest_list if p.pest_id == item_id), None)
     if item is None:
-        item = next((d for d in disease_list if d.id == item_id), None)
+        item = next((d for d in disease_list if d.disease_id == item_id), None)
     if item is None:
-        return HttpResponseNotFound("Page not Found") # Displays 404 page
-    return render(request, 'app_mango/pest_detail.html', {'item': item})
+        return HttpResponseNotFound("Page not Found")
+    return render(request, 'app_mango/detail.html', {'item': item})
 
 def about(request):
     return render(request, 'app_mango/about.html')

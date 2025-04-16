@@ -30,13 +30,13 @@ pest1 = PestInfo(
     critical_control_period="Pre-flowering and post-fruit set",
     monitoring="Inspect young fruit for egg scars and random fruit samples for larval presence in seeds.",
     comments="Remove fallen fruit to reduce populations.",
-    image_url=""
+    image_url="app_mango/images/pests/mango_seed_weevil.jpeg"
 )
 
 pest2 = PestInfo(
     pest_id=2,
-    common_name="Mango seed weevil",
-    scientific_name="Sternochetus mangiferae",
+    common_name="Fruitspotting bug",
+    scientific_name="Amblypelta lutescens lutescens",
     family="Coreidae",
     description="Eggs are oval, pale green, and laid singly on shoots or petioles. Nymphs are tear-drop shaped with a green body, red patch, and two black dots encircled in white. Adults are light to dark green with light brown backs and are agile fliers, around 15mm long.",
     life_cycle="Egg to adult: 35-42 days; 4-5 generations/year; eggs laid singly on young shoots.",
@@ -46,7 +46,7 @@ pest2 = PestInfo(
     critical_control_period="Flushing to fruit development",
     monitoring="Inspect young fruit for egg scars and random fruit samples for larval presence in seeds.",
     comments="Difficult to find; causes internal damage.",
-    image_url=""
+    image_url="app_mango/images/pests/Fruitspotting_bug.jpeg"
 )
 
 pest3 = PestInfo(
@@ -62,7 +62,7 @@ pest3 = PestInfo(
     critical_control_period="Fruit development stage",
     monitoring="Inspect fruit on tree and fallen fruit for frass and holes.",
     comments="More common in the Northern Territory.",
-    image_url=""
+    image_url="app_mango/images/pests/Mango_fruit_borer.jpeg"
 )
 
 pest4 = PestInfo(
@@ -78,7 +78,7 @@ pest4 = PestInfo(
     critical_control_period="Late wet season to harvest",
     monitoring="Check new flush and fruit for spotting damage.",
     comments="Prefers dense canopies; rarely seen directly.",
-    image_url="image_path_or_url_here"
+    image_url="app_mango/images/pests/Tea_mosquito_bug.jpeg"
 )
 
 pest_list = [pest1, pest2, pest3, pest4] 

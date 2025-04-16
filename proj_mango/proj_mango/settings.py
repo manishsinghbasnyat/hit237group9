@@ -38,11 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    
-    
-    # My apps
-    'app_mango'
+    'django.contrib.staticfiles',   
+     'app_mango',
+   
 ]
 
 MIDDLEWARE = [
@@ -121,22 +119,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+import os
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'app_mango', 'static'),
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "app_mango/static"),
-]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
-
-INSTALLED_APPS = [
-
-    'app_pests',  # must be included
-]
