@@ -66,7 +66,7 @@ pest3 = PestInfo(
 
 pest4 = PestInfo(
     pest_id=4,
-    common_name="Tea mosquito bug"
+    common_name="Tea mosquito bug",  
     scientific_name="Helopeltis pernicialis",
     family="Miridae",
     description="Adults are slender reddish-brown bugs with an orange thorax and long black legs. Nymphs are golden brown and wingless. Both stages have piercing-sucking mouthparts. Eggs are inserted into plant tissue and are rarely visible.",
@@ -80,7 +80,7 @@ pest4 = PestInfo(
     image_url="image_path_or_url_here"
 )
 
-pest_list = [pest1,]
+pest_list = [pest1, pest2, pest3, pest4] 
 
 
 # -- Adding Diseases -- #
@@ -117,7 +117,7 @@ disease1 = DiseaseInfo(
     image_url=""
 )
 
-isease2 = DiseaseInfo(
+disease2 = DiseaseInfo(  
     disease_id=2,
     common_name="Powdery mildew",
     scientific_name="Oidium mangiferae",
@@ -146,3 +146,5 @@ disease3 = DiseaseInfo(
     impact="Causes fruit blemishes and drop, reducing marketability.",
     image_url=""
 )
+
+disease_list = [disease1, disease2, disease3] 
