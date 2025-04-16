@@ -1,4 +1,4 @@
-from models import PestInfo, DiseaseInfo
+from .models import PestInfo, DiseaseInfo
 
 # -- Adding Pests -- #
 """
@@ -17,6 +17,7 @@ comments,                # Additional notes or observations
 image_url                # Link or path to an image of the pest"""
 
 pest1 = PestInfo(
+
     pest_id=1,
     common_name="Mango seed weevil",
     scientific_name="Sternochetus mangiferae",
