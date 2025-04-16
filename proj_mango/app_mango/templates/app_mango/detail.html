@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ item.common_name }} - Mango Pest & Disease Guide</title>
     <link rel="stylesheet" href="{% static 'app_mango/css/style.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <header>
@@ -45,6 +45,7 @@
 
             <div class="detail-content">
                 {% if item.pest_id %}
+
                 <!-- Pest specific content -->
                 <div class="detail-section">
                     <h2>Description</h2>
@@ -88,6 +89,7 @@
                 </div>
                 {% endif %}
                 {% else %}
+                
                 <!-- Disease specific content -->
                 <div class="detail-section">
                     <h2>Symptoms</h2>
