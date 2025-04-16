@@ -30,7 +30,7 @@ pest1 = PestInfo(
     critical_control_period="Pre-flowering and post-fruit set",
     monitoring="Inspect young fruit for egg scars and random fruit samples for larval presence in seeds.",
     comments="Remove fallen fruit to reduce populations.",
-    image_url="app_mango/images/pests/mango_seed_weevil.jpeg"
+    image_url="images/mango seed weevil.jpg"
 )
 
 pest2 = PestInfo(
@@ -46,7 +46,7 @@ pest2 = PestInfo(
     critical_control_period="Flushing to fruit development",
     monitoring="Inspect young fruit for egg scars and random fruit samples for larval presence in seeds.",
     comments="Difficult to find; causes internal damage.",
-    image_url="app_mango/images/pests/Fruitspotting_bug.jpeg"
+    image_url="images/fruitspotting bug.jpg"
 )
 
 pest3 = PestInfo(
@@ -62,7 +62,7 @@ pest3 = PestInfo(
     critical_control_period="Fruit development stage",
     monitoring="Inspect fruit on tree and fallen fruit for frass and holes.",
     comments="More common in the Northern Territory.",
-    image_url="app_mango/images/pests/Mango_fruit_borer.jpeg"
+    image_url="images/Mango Fruit Borer.jpeg"
 )
 
 pest4 = PestInfo(
@@ -78,7 +78,7 @@ pest4 = PestInfo(
     critical_control_period="Late wet season to harvest",
     monitoring="Check new flush and fruit for spotting damage.",
     comments="Prefers dense canopies; rarely seen directly.",
-    image_url="app_mango/images/pests/Tea_mosquito_bug.jpeg"
+    image_url="images/Tea mosquito bug.webp"
 )
 
 pest_list = [pest1, pest2, pest3, pest4] 
@@ -148,4 +148,4 @@ disease3 = DiseaseInfo(
     image_url=""
 )
 
-disease_list = [disease1, disease2, disease3] 
+disease_list = [disease1, disease2, disease3]
