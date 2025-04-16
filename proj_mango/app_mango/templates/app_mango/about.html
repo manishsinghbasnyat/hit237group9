@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Mango Pest & Disease Guide</title>
+    <link rel="stylesheet" href="{% static 'app_mango/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Mango Pest & Disease Guide</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'pest_list' %}">Pests & Diseases</a></li>
+                <li><a href="{% url 'about' %}" class="active">About</a></li>
+                <li><a href="{% url 'references' %}">References</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container about-page">
+        <section class="about-section">
+            <h2 class="section-heading">About This Project</h2>
+            <p>The Mango Pest & Disease Guide is a comprehensive resource designed to help mango growers, agriculturists, and students identify and manage common pests and diseases affecting mango crops in Australia.</p>
+            
+            <p>This project was developed as part of a university course assignment, aimed at creating a practical tool for the agricultural community while demonstrating web development skills.</p>
+        </section>
+
+        <section class="team-section">
+            <h2 class="section-heading">Our Team</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <h3>Subodh Gautam</h3>
+                    <p>Student ID: s372144</p>
+                    <p>Role: Backend Developer</p>
+                </div>
+                <div class="team-member">
+                    <h3>Manish Singh Basnyat</h3>
+                    <p>Student ID: s371964</p>
+                    <p>Role: Frontend Developer</p>
+                </div>
+                <div class="team-member">
+                    <h3>Sagar Khanal</h3>
+                    <p>Student ID:s370166</p>
+                    <p>Role: Content Researcher</p>
+                </div>
+                <div class="team-member">
+                    <h3>Anjana Thapa Magar</h3>
+                    <p>Student ID: s374914</p>
+                    <p>Role: UX/UI Designer</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-info">
+            <h2 class="section-heading">Project Information</h2>
+            <p>This website was built using Django, a high-level Python web framework, along with HTML, and CSS. The database contains information about common mango pests and diseases, their characteristics, and management strategies.</p>
+            
+            <p>All information provided has been researched and compiled from reliable agricultural resources and scientific literature. For a complete list of references, please visit our <a href="{% url 'references' %}">References</a> page.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mango Pest & Disease Guide | Developed by Student Team</p>
+    </footer>
+</body>
+</html>
