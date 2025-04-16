@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+    
+<!-- Load the static files tag -->
 {% load static %}
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Mango Pests & Diseases{% endblock %}</title>
+    <title>Mango Pest & Disease Tracker</title>
+    <!-- Add your CSS file for styling here -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <!-- Home Page Link -->
-                <li><a href="{% url 'home' %}">Home</a></li>
-                
-                <!-- Pest & Disease List Link -->
-                <li><a href="{% url 'pest_disease_list' %}">Pest & Disease List</a></li>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <!-- Link to Home Page -->
+            <li><a href="{% url 'home' %}">Home Page</a></li>
+            
+            <!-- Link to Pest & Disease List Page -->
+            <li><a href="{% url 'pest_disease_list' %}">Pest & Disease List</a></li>
+            
+            <!-- Link to Pest Detail Page -->
+            <li><a href="{% url 'pest_detail' pest_id=1 %}">Pest Detail Page</a></li> <!-- Example link with pest_id 1 -->
+            
+            <!-- Link to Disease Detail Page -->
+            <li><a href="{% url 'disease_detail' disease_id=1 %}">Disease Detail Page</a></li> <!-- Example link with disease_id 1 -->
+            
+            <!-- Link to About Page -->
+            <li><a href="{% url 'about' %}">About Page</a></li>
+        </ul>
+    </nav>
 
-                <!-- Pest Detail Links (Loop through pest list and create dynamic links) -->
-                {% for pest in pest_list %}
-                    <li><a href="{% url 'pest_detail' pest_id=pest.id %}">{{ pest.name }}</a></li>
-                {% endfor %}
-
-                <!-- Disease Detail Links (Loop through disease list and create dynamic links) -->
-                {% for disease in disease_list %}
-                    <li><a href="{% url 'disease_detail' disease_id=disease.id %}">{{ disease.name }}</a></li>
-                {% endfor %}
-
-                <!-- About Page Link -->
-                <li><a href="{% url 'about' %}">About</a></li>
-            </ul>
-        </nav>
-    </header>
-
+    <!-- Content Block for Child Templates to Extend -->
     <div class="content">
         {% block content %}
+        <!-- This will be replaced by the content of the individual page -->
         {% endblock %}
     </div>
 </body>

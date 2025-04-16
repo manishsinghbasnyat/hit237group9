@@ -81,7 +81,7 @@ pest4 = PestInfo(
     image_url="image_path_or_url_here"
 )
 
-pest_list = [pest1,]
+pest_list = [pest1,pest2,pest3,pest4]
 
 
 # -- Adding Diseases -- #

@@ -25,19 +25,19 @@ urlpatterns = [
     
     # -- my urls -- #
 
-    # Home Page URL
+   # Home page (Introduction and overview)
     path('', views.home, name='home'),
 
-    # Pest & Disease List URL
+    # Combined Pest & Disease List
     path('pests-diseases/', views.pest_disease_list, name='pest_disease_list'),
 
-    # Pest Detail URL (Dynamic URL based on pest_id)
+    # Individual Pest Detail Page
     path('detail/pest/<int:pest_id>/', views.pest_detail, name='pest_detail'),
 
-    # Disease Detail URL (Dynamic URL based on disease_id)
+    # Individual Disease Detail Page
     path('detail/disease/<int:disease_id>/', views.disease_detail, name='disease_detail'),
 
-    # About Page URL
+    # About page (Team details)
     path('about/', views.about, name='about'),
 ]
 
