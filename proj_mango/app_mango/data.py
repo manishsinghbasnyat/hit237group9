@@ -1,8 +1,8 @@
-from models import PestInfo, DiseaseInfo
+from .models import PestInfo, DiseaseInfo
 
 # -- Adding Pests -- #
 """
-pest_id,                  # Unique identifier for each pest (e.g., pest1, pest2)
+pest_id,                 # Unique identifier for each pest (e.g., pest1, pest2)
 common_name,             # Common name of the pest
 scientific_name,         # Scientific name of the pest
 family,                  # Family classification of the pest
@@ -17,11 +17,12 @@ comments,                # Additional notes or observations
 image_url                # Link or path to an image of the pest"""
 
 pest1 = PestInfo(
+
     pest_id=1,
     common_name="Mango seed weevil",
     scientific_name="Sternochetus mangiferae",
     family="Curculionidae",
-    description="Eggs: creamy white, elongate; Larvae: white, legless with brown head; Adults: dark brown to grey-black with a snout.",
+    description="Eggs are creamy white, elongate and laid singly on developing fruit. Larvae are white, legless grubs with brown heads that burrow into the fruit and seed. Adults are dark brown to black, oval-shaped beetles with a long snout and mottled patterns on their backs, measuring up to 10mm in length.",
     life_cycle="One generation per year. Development from egg to adult ~53 days. Eggs laid on fruit, larvae feed inside seed.",
     damage_description="Damage is only to the seed, with sap exudate at egg laying; external symptoms not visible at harvest.",
     importance="Quarantine pest; significant in trade regulation.",
@@ -29,15 +30,15 @@ pest1 = PestInfo(
     critical_control_period="Pre-flowering and post-fruit set",
     monitoring="Inspect young fruit for egg scars and random fruit samples for larval presence in seeds.",
     comments="Remove fallen fruit to reduce populations.",
-    image_url=""
+    image_url="images/mango seed weevil.jpg"
 )
 
 pest2 = PestInfo(
     pest_id=2,
-    common_name="Mango seed weevil",
-    scientific_name="Sternochetus mangiferae",
+    common_name="Fruitspotting bug",
+    scientific_name="Amblypelta lutescens lutescens",
     family="Coreidae",
-    description="Eggs: pale green, oval; Nymphs: tear-drop shaped with red and black patterns; Adults: green with brown back.",
+    description="Eggs are oval, pale green, and laid singly on shoots or petioles. Nymphs are tear-drop shaped with a green body, red patch, and two black dots encircled in white. Adults are light to dark green with light brown backs and are agile fliers, around 15mm long.",
     life_cycle="Egg to adult: 35-42 days; 4-5 generations/year; eggs laid singly on young shoots.",
     damage_description="Lesions and cracks on shoots and young fruit; fruit drop and internal cavities in mature fruit.",
     importance="High; causes significant fruit loss.",
@@ -45,7 +46,7 @@ pest2 = PestInfo(
     critical_control_period="Flushing to fruit development",
     monitoring="Inspect young fruit for egg scars and random fruit samples for larval presence in seeds.",
     comments="Difficult to find; causes internal damage.",
-    image_url=""
+    image_url="images/fruitspotting bug.jpg"
 )
 
 pest3 = PestInfo(
@@ -53,7 +54,7 @@ pest3 = PestInfo(
     common_name="Mango fruit borer",
     scientific_name="Citripestis eutraphera",
     family="Pyralidae",
-    description="Eggs: white, turn red in a day; Larvae: pale pink to red brown with dark head; Adults: dark brown forewings.",
+    description="Eggs are small, white, and turn reddish within 24 hours. Larvae are pinkish to red-brown with dark heads and black bands along the body. Adults are small brown moths with pale hindwings and a 20–24mm wingspan.",
     life_cycle="Egg to adult ~30 days; larvae pupate after 14 days feeding, adults live ~10 days.",
     damage_description="Frass around fruit stem; larvae tunnel into fruit, damaging flesh.",
     importance="High; affects fruit marketability.",
@@ -61,15 +62,15 @@ pest3 = PestInfo(
     critical_control_period="Fruit development stage",
     monitoring="Inspect fruit on tree and fallen fruit for frass and holes.",
     comments="More common in the Northern Territory.",
-    image_url=""
+    image_url="images/Mango Fruit Borer.webp"
 )
 
 pest4 = PestInfo(
     pest_id=4,
-    common_name="Tea mosquito bug"
+    common_name="Tea mosquito bug",  
     scientific_name="Helopeltis pernicialis",
     family="Miridae",
-    description="Eggs: elongate; Nymphs: pale golden-brown; Adults: dark red/brown with orange thorax and long legs.",
+    description="Adults are slender reddish-brown bugs with an orange thorax and long black legs. Nymphs are golden brown and wingless. Both stages have piercing-sucking mouthparts. Eggs are inserted into plant tissue and are rarely visible.",
     life_cycle="Egg to adult: 15-30 days. Eggs laid in stems and petioles.",
     damage_description="Black necrotic lesions on shoots and fruit; corky depressions on fruit.",
     importance="Moderate to high; impacts fruit quality.",
@@ -77,10 +78,10 @@ pest4 = PestInfo(
     critical_control_period="Late wet season to harvest",
     monitoring="Check new flush and fruit for spotting damage.",
     comments="Prefers dense canopies; rarely seen directly.",
-    image_url="image_path_or_url_here"
+    image_url="images/Tea mosquito bug.jpeg"
 )
 
-pest_list = [pest1,]
+pest_list = [pest1, pest2, pest3, pest4] 
 
 
 # -- Adding Diseases -- #
@@ -102,11 +103,49 @@ image_url            # URL or path to an image of the disease
 
 """
 
-disease1=DiseaseInfo(
+disease1 = DiseaseInfo(
     disease_id=1,
-    common_name="",
-    scientific_name="",
-    type=""
-    
-    
-    )
+    common_name="Anthracnose",
+    scientific_name="Colletotrichum gloeosporioides",
+    type="Fungal",
+    symptoms="Black spots on leaves, flower blight, fruit lesions with orange-pink spore masses, tear stains on fruit.",
+    distribution="All mango growing regions in Australia; less significant in Katherine.",
+    favoured_by="Rain, fog, high humidity, poor pruning and orchard hygiene.",
+    similar_to="Thrips, oedema, nutritional disorders (calcium).",
+    control_strategies="Pruning, orchard hygiene, fungicides (mancozeb, copper, strobilurins).",
+    life_cycle="Spores germinate in moist conditions. Latent infections in fruit activate during ripening.",
+    impact="Most important fungal disease of mango; can severely reduce yield and marketability.",
+    image_url="image/Anthracnose.webp"
+)
+
+disease2 = DiseaseInfo(  
+    disease_id=2,
+    common_name="Powdery mildew",
+    scientific_name="Oidium mangiferae",
+    type="Fungal",
+    symptoms="White powdery growth on leaves, flowers and fruit; blackened panicles; fruit drop.",
+    distribution="All regions; more common in Queensland.",
+    favoured_by="Cool, dry weather interrupted by humidity.",
+    similar_to="Bacterial black spot.",
+    control_strategies="Broad-spectrum fungicides; varies by cultivar susceptibility.",
+    life_cycle="Spores spread by wind; produced within infected tissue.",
+    impact="Affects flowering and fruit set; can be significant in susceptible varieties.",
+    image_url="image/Powdery mildew.jpg"
+)
+
+disease3 = DiseaseInfo(
+    disease_id=3,
+    common_name="Mango scab",
+    scientific_name="Elsinoë mangiferae",
+    type="Fungal",
+    symptoms="Dark brown scabs on fruit; distorted leaf margins; raised lesions on stems.",
+    distribution="All regions; less significant in Katherine.",
+    favoured_by="Rain and high humidity during flowering and flush.",
+    similar_to="Spray or insect injury, lenticel spotting.",
+    control_strategies="Preventative copper fungicides.",
+    life_cycle="Spores form on lesions in wet weather; dispersed by wind and rain.",
+    impact="Causes fruit blemishes and drop, reducing marketability.",
+    image_url="Powdery mildew.jpg"
+)
+
+disease_list = [disease1, disease2, disease3]
