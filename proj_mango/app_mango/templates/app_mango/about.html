@@ -1,72 +1,266 @@
+<!-- app_pests/templates/app_pests/about.html -->
+{% extends "app_pests/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Mango Pest & Disease Guide</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <h1>Mango Pest & Disease Guide</h1>
+
+{% block content %}
+<div class="about-page">
+    <section class="about-hero">
+        <h1>About Mango Surveillance</h1>
+        <p class="lead">Dedicated to protecting mango crops through education, research, and community engagement</p>
+    </section>
+
+    <section class="about-mission">
+        <div class="mission-content">
+            <div class="mission-text">
+                <h2>Our Mission</h2>
+                <p>At Mango Surveillance, we're committed to supporting mango growers by providing accurate, accessible information about pests and diseases that affect mango crops. Our mission is to empower farmers with knowledge that helps them implement effective prevention and management strategies for healthier, more productive harvests.</p>
+                <p>We believe that through education and awareness, we can contribute to sustainable farming practices and food security in mango-growing regions around the world.</p>
             </div>
-            <ul class="nav-links">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'pest_list' %}">Pests & Diseases</a></li>
-                <li><a href="{% url 'about' %}" class="active">About</a></li>
-                <li><a href="{% url 'references' %}">References</a></li>
-            </ul>
-        </nav>
-    </header>
+        </div>
+    </section>
 
-    <main class="container about-page">
-        <section class="about-section">
-            <h2 class="section-heading">About This Project</h2>
-            <p>The Mango Pest & Disease Guide is a comprehensive resource designed to help mango growers, agriculturists, and students identify and manage common pests and diseases affecting mango crops in Australia.</p>
-            
-            <p>This project was developed as part of a university course assignment, aimed at creating a practical tool for the agricultural community while demonstrating web development skills.</p>
-        </section>
+    <section class="about-team">
+        <h2>Meet Our Team</h2>
+        <p>Our dedicated team brings together knowledge and skills to provide you with the most accurate and practical information about mango pests and diseases.</p>
 
-        <section class="team-section">
-            <h2 class="section-heading">Our Team</h2>
-            <div class="team-members">
-                <div class="team-member">
-                    <h3>Student Name</h3>
-                    <p>Student ID: 12345678</p>
-                    <p>Role: Frontend Developer</p>
-                </div>
-                <div class="team-member">
-                    <h3>Student Name</h3>
-                    <p>Student ID: 23456789</p>
-                    <p>Role: Backend Developer</p>
-                </div>
-                <div class="team-member">
-                    <h3>Student Name</h3>
-                    <p>Student ID: 34567890</p>
-                    <p>Role: Content Researcher</p>
-                </div>
-                <div class="team-member">
-                    <h3>Student Name</h3>
-                    <p>Student ID: 45678901</p>
-                    <p>Role: UX/UI Designer</p>
-                </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <h3>Subodh Gautam</h3>
+                <p class="member-role"><strong>Team Leader</strong></p>
+                <p>Oversees project progress, ensures deadlines are met, and coordinates the team's efforts. Subodh leads our research initiatives and content development.</p>
             </div>
-        </section>
 
-        <section class="project-info">
-            <h2 class="section-heading">Project Information</h2>
-            <p>This website was built using Django, a high-level Python web framework, along with HTML, CSS, and JavaScript. The database contains information about common mango pests and diseases, their characteristics, and management strategies.</p>
-            
-            <p>All information provided has been researched and compiled from reliable agricultural resources and scientific literature. For a complete list of references, please visit our <a href="{% url 'references' %}">References</a> page.</p>
-        </section>
-    </main>
+            <div class="team-member">
+                <h3>Manish Singh Basnyat</h3>
+                <p class="member-role"><strong>Team Member</strong></p>
+                <p>Contributes to research, documentation, and technical development. Manish helps ensure our information is accessible through user-friendly digital platforms.</p>
+            </div>
 
-    <footer>
-        <p>&copy; 2025 Mango Pest & Disease Guide | Developed by Student Team</p>
-    </footer>
-</body>
-</html>
+            <div class="team-member">
+                <h3>Anjana Thapa Magar</h3>
+                <p class="member-role"><strong>Team Member</strong></p>
+                <p>Assists with data collection and content creation. Anjana helps bridge the gap between scientific research and practical application for growers.</p>
+            </div>
+
+            <div class="team-member">
+                <h3>Sagar Khanal</h3>
+                <p class="member-role"><strong>Team Member</strong></p>
+                <p>Supports research on mango pests and diseases. Sagar helps gather and analyze information about identification and management approaches.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-approach">
+        <h2>Our Approach</h2>
+
+        <div class="approach-grid">
+            <div class="approach-card">
+                <div class="card-icon">
+                    <i class="fas fa-microscope"></i>
+                </div>
+                <h3>Research-Based</h3>
+                <p>All information provided on our platform is based on scientific research and field-tested methods, ensuring reliability and effectiveness.</p>
+            </div>
+
+            <div class="approach-card">
+                <div class="card-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Sustainability Focused</h3>
+                <p>We prioritize management approaches that consider environmental impact, promoting sustainable farming practices wherever possible.</p>
+            </div>
+
+            <div class="approach-card">
+                <div class="card-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Community Oriented</h3>
+                <p>We engage with the farming community to understand challenges and share solutions, creating a collaborative knowledge ecosystem.</p>
+            </div>
+
+            <div class="approach-card">
+                <div class="card-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>Regularly Updated</h3>
+                <p>Pest and disease management is an evolving field. We continually update our resources to reflect the latest findings and best practices.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-contact">
+        <h2>Get In Touch</h2>
+        <p>Have questions or suggestions? We'd love to hear from you. Reach out to our team using the contact information below or through our contact form.</p>
+
+        <div class="contact-options">
+            <div class="contact-option">
+                <i class="fas fa-envelope"></i>
+                <h3>Email Us</h3>
+                <p>info@mangosurveillance.org</p>
+            </div>
+
+            <div class="contact-option">
+                <i class="fas fa-phone"></i>
+                <h3>Call Us</h3>
+                <p>+1 (555) 123-4567</p>
+            </div>
+
+            <div class="contact-option">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Visit Us</h3>
+                <p>123 Orchard Lane<br>Mango Heights, MG 12345</p>
+            </div>
+        </div>
+
+        <div class="cta-button">
+            <a href="{% url 'home' %}#contact" class="btn">Contact Form</a>
+        </div>
+    </section>
+</div>
+
+<style>
+/* About page specific styles */
+.about-page {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-hero {
+    text-align: center;
+    padding: 2rem 0 3rem;
+}
+
+.about-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.lead {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-mission {
+    margin: 3rem 0;
+    padding: 3rem;
+    background-color: #f9f9f9;
+    border-radius: var(--border-radius);
+}
+
+.mission-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-team {
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    text-align: left;
+}
+
+.team-member {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+.member-role {
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.about-approach {
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.approach-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.approach-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.about-contact {
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.contact-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.contact-option {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.contact-option:hover {
+    transform: translateY(-5px);
+}
+
+.contact-option i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.cta-button {
+    margin-top: 3rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .about-mission {
+        padding: 2rem;
+    }
+
+    .team-grid,
+    .approach-grid,
+    .contact-options {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}

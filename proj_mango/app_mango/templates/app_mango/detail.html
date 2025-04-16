@@ -1,140 +1,366 @@
+<!-- app_pests/templates/app_pests/combined_list.html -->
+{% extends "app_pests/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ item.common_name }} - Mango Pest & Disease Guide</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <h1>Mango Pest & Disease Guide</h1>
+
+{% block content %}
+<div class="pest-library">
+    <div class="library-header">
+        <h1>Mango Pest & Disease Library</h1>
+        <p>Comprehensive information on common pests and diseases affecting mango crops</p>
+        
+        <div class="search-filter">
+            <div class="search-box">
+                <input type="text" id="item-search" placeholder="Search pests and diseases...">
+                <i class="fas fa-search"></i>
             </div>
-            <ul class="nav-links">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'pest_list' %}">Pests & Diseases</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'references' %}">References</a></li>
+            <div class="filter-options">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="pests">Pests</button>
+                <button class="filter-btn" data-filter="diseases">Diseases</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="combined-list-container">
+        <!-- Pests Section -->
+        <section id="pests-section" class="list-section">
+            <h2>Pests</h2>
+            <ul class="item-list" id="pest-list">
+                {% for pest in pests %}
+                    <li class="list-item pest-item" data-type="pest">
+                        <div class="item-card">
+                            <div class="item-image">
+                                {% if pest.image_url %}
+                                <img src="{{ pest.image_url }}" alt="{{ pest.common_name }}">
+                                {% else %}
+                                <img src="https://via.placeholder.com/300x200?text={{ pest.common_name }}" alt="{{ pest.common_name }}">
+                                {% endif %}
+                            </div>
+                            <div class="item-content">
+                                <div class="item-header">
+                                    <h3>{{ pest.common_name }}</h3>
+                                    <span class="badge pest"><i class="fas fa-bug"></i> Pest</span>
+                                </div>
+                                <p class="scientific-name"><em>{{ pest.scientific_name }}</em></p>
+                                <p>{{ pest.description|truncatechars:150 }}</p>
+                                <div class="item-details">
+                                    <p><strong>Hosts:</strong> {{ pest.hosts }}</p>
+                                    <a href="{% url 'pest_detail' pest_id=pest.pest_id %}" class="btn btn-sm">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
             </ul>
-        </nav>
-    </header>
+        </section>
 
-    <main class="container detail-page">
-        <div class="breadcrumb">
-            <a href="{% url 'pest_list' %}">← Back to Pests & Diseases</a>
-        </div>
+        <!-- Diseases Section -->
+        <section id="diseases-section" class="list-section">
+            <h2>Diseases</h2>
+            <ul class="item-list" id="disease-list">
+                {% for disease in diseases %}
+                    <li class="list-item disease-item" data-type="disease">
+                        <div class="item-card">
+                            <div class="item-image">
+                                {% if disease.image_url %}
+                                <img src="{{ disease.image_url }}" alt="{{ disease.common_name }}">
+                                {% else %}
+                                <img src="https://via.placeholder.com/300x200?text={{ disease.common_name }}" alt="{{ disease.common_name }}">
+                                {% endif %}
+                            </div>
+                            <div class="item-content">
+                                <div class="item-header">
+                                    <h3>{{ disease.common_name }}</h3>
+                                    <span class="badge disease"><i class="fas fa-virus"></i> {{ disease.type }}</span>
+                                </div>
+                                <p class="scientific-name"><em>{{ disease.scientific_name }}</em></p>
+                                <p>{{ disease.symptoms|truncatechars:150 }}</p>
+                                <div class="item-details">
+                                    <a href="{% url 'disease_detail' id=disease.disease_id %}" class="btn btn-sm">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
 
-        <div class="detail-container">
-            <div class="detail-header">
-                <div class="detail-info">
-                    <h1>{{ item.common_name }}</h1>
-                    <p class="scientific-name"><em>{{ item.scientific_name }}</em></p>
-                    {% if hasattr(item, 'family') %}
-                    <p class="family-name">Family: {{ item.family }}</p>
-                    {% elif hasattr(item, 'type') %}
-                    <p class="type">Type: {{ item.type }}</p>
-                    {% endif %}
-                </div>
-                {% if item.image_url %}
-                <div class="detail-image">
-                    <img src="{% static item.image_url %}" alt="{{ item.common_name }}">
-                </div>
-                {% endif %}
-            </div>
+    <div class="no-results" style="display: none;">
+        <i class="fas fa-search"></i>
+        <h2>No results found</h2>
+        <p>Try adjusting your search or filter criteria</p>
+    </div>
+</div>
 
-            <div class="detail-content">
-                {% if hasattr(item, 'pest_id') %}
-                <!-- Pest specific content -->
-                <div class="detail-section">
-                    <h2>Description</h2>
-                    <p>{{ item.description }}</p>
-                </div>
+<style>
+.pest-library {
+    margin-bottom: 3rem;
+}
 
-                <div class="detail-section">
-                    <h2>Life Cycle</h2>
-                    <p>{{ item.life_cycle }}</p>
-                </div>
+.library-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
 
-                <div class="detail-section">
-                    <h2>Damage</h2>
-                    <p>{{ item.damage_description }}</p>
-                </div>
+.search-filter {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
 
-                <div class="detail-section">
-                    <h2>Importance</h2>
-                    <p>{{ item.importance }}</p>
-                </div>
+.search-box {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+}
 
-                <div class="detail-section">
-                    <h2>Host Plants</h2>
-                    <p>{{ item.hosts }}</p>
-                </div>
+.search-box input {
+    width: 100%;
+    padding: 12px 20px;
+    padding-right: 50px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 1rem;
+}
 
-                <div class="detail-section">
-                    <h2>Critical Control Period</h2>
-                    <p>{{ item.critical_control_period }}</p>
-                </div>
+.search-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+}
 
-                <div class="detail-section">
-                    <h2>Monitoring Methods</h2>
-                    <p>{{ item.monitoring }}</p>
-                </div>
+.filter-options {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
 
-                {% if item.comments %}
-                <div class="detail-section">
-                    <h2>Additional Notes</h2>
-                    <p>{{ item.comments }}</p>
-                </div>
-                {% endif %}
-                {% else %}
-                <!-- Disease specific content -->
-                <div class="detail-section">
-                    <h2>Symptoms</h2>
-                    <p>{{ item.symptoms }}</p>
-                </div>
+.filter-btn {
+    padding: 8px 16px;
+    background: #f1f1f1;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
 
-                <div class="detail-section">
-                    <h2>Distribution</h2>
-                    <p>{{ item.distribution }}</p>
-                </div>
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
 
-                <div class="detail-section">
-                    <h2>Favorable Conditions</h2>
-                    <p>{{ item.favoured_by }}</p>
-                </div>
+.combined-list-container {
+    margin-top: 2rem;
+}
 
-                <div class="detail-section">
-                    <h2>Similar Conditions</h2>
-                    <p>{{ item.similar_to }}</p>
-                </div>
+.list-section {
+    margin-bottom: 3rem;
+}
 
-                <div class="detail-section">
-                    <h2>Control Strategies</h2>
-                    <p>{{ item.control_strategies }}</p>
-                </div>
+.list-section h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+}
 
-                <div class="detail-section">
-                    <h2>Life Cycle</h2>
-                    <p>{{ item.life_cycle }}</p>
-                </div>
+.item-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
 
-                {% if item.impact %}
-                <div class="detail-section">
-                    <h2>Impact</h2>
-                    <p>{{ item.impact }}</p>
-                </div>
-                {% endif %}
-                {% endif %}
-            </div>
-        </div>
-    </main>
+.list-item {
+    transition: transform 0.3s ease;
+}
 
-    <footer>
-        <p>&copy; 2025 Mango Pest & Disease Guide | Developed by Student Team</p>
-    </footer>
-</body>
-</html>
+.list-item:hover {
+    transform: translateY(-5px);
+}
+
+.item-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    height: 100%;
+}
+
+.item-image {
+    height: 200px;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.scientific-name {
+    color: #666;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.item-details {
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+    margin-top: auto;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.badge.pest {
+    background-color: #ff7043;
+    color: white;
+}
+
+.badge.disease {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    margin-top: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-sm:hover {
+    background-color: #236b41;
+}
+
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-top: 2rem;
+}
+
+.no-results i {
+    font-size: 3rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .item-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Responsive adjustments */
+@media (min-width: 992px) {
+    .item-list {
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+    
+    .item-card {
+        flex-direction: row;
+    }
+    
+    .item-image {
+        flex: 0 0 200px;
+        height: auto;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('item-search');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const listItems = document.querySelectorAll('.list-item');
+    const noResults = document.querySelector('.no-results');
+    
+    // Search functionality
+    searchInput.addEventListener('input', filterItems);
+    
+    // Filter buttons
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            filterItems();
+        });
+    });
+    
+    function filterItems() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+        let visibleCount = 0;
+        
+        listItems.forEach(item => {
+            const itemName = item.querySelector('h3').textContent.toLowerCase();
+            const itemType = item.getAttribute('data-type');
+            const scientificName = item.querySelector('.scientific-name').textContent.toLowerCase();
+            const description = item.querySelector('p:not(.scientific-name)').textContent.toLowerCase();
+            
+            // Check if item matches search term
+            const matchesSearch = itemName.includes(searchTerm) || 
+                                scientificName.includes(searchTerm) || 
+                                description.includes(searchTerm);
+            
+            // Check if item matches selected filter
+            const matchesFilter = activeFilter === 'all' || itemType === activeFilter;
+            
+            // Show/hide item based on search and filter
+            if (matchesSearch && matchesFilter) {
+                item.style.display = '';
+                visibleCount++;
+            } else {
+                item.style.display = 'none';
+            }
+        });
+        
+        // Show/hide no results message
+        if (visibleCount === 0) {
+            noResults.style.display = 'block';
+        } else {
+            noResults.style.display = 'none';
+        }
+    }
+});
+</script>
+{% endblock %}

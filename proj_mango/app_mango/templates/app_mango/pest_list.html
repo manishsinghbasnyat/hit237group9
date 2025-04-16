@@ -1,86 +1,213 @@
+<!-- app_pests/templates/app_pests/pests_list.html -->
+{% extends "app_pests/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mango Pests & Diseases</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <h1>Mango Pest & Disease Guide</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'pest_list' %}" class="active">Pests & Diseases</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'references' %}">References</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main class="container">
-        <section class="pest-section">
-            <h2 class="section-title">Mango Pests</h2>
-            <div class="card-container">
-                {% for pest in pests %}
-                <div class="card">
-                    {% if pest.image_url %}
-                    <div class="card-image">
-                        <img src="{% static pest.image_url %}" alt="{{ pest.common_name }}">
-                    </div>
-                    {% else %}
-                    <div class="card-image placeholder">
-                        <p>No image available</p>
-                    </div>
-                    {% endif %}
-                    <div class="card-content">
-                        <h3>{{ pest.common_name }}</h3>
-                        <p class="scientific-name"><em>{{ pest.scientific_name }}</em></p>
-                        <p class="description">{{ pest.description|truncatechars:100 }}</p>
-                        <a href="{% url 'pest_detail' pest.pest_id %}" class="btn">View Details</a>
-                    </div>
-                </div>
-                {% empty %}
-                <p>No pests available.</p>
-                {% endfor %}
+{% block content %}
+<div class="pest-library">
+    <div class="library-header">
+        <h1>Mango Pest & Disease Library</h1>
+        <p>Comprehensive information on common pests and diseases affecting mango crops</p>
+        
+        <div class="search-filter">
+            <div class="search-box">
+                <input type="text" id="pest-search" placeholder="Search pests...">
+                <i class="fas fa-search"></i>
             </div>
-        </section>
-
-        <section class="disease-section">
-            <h2 class="section-title">Mango Diseases</h2>
-            <div class="card-container">
-                {% for disease in diseases %}
-                <div class="card">
-                    {% if disease.image_url %}
-                    <div class="card-image">
-                        <img src="{% static disease.image_url %}" alt="{{ disease.common_name }}">
-                    </div>
-                    {% else %}
-                    <div class="card-image placeholder">
-                        <p>No image available</p>
-                    </div>
-                    {% endif %}
-                    <div class="card-content">
-                        <h3>{{ disease.common_name }}</h3>
-                        <p class="scientific-name"><em>{{ disease.scientific_name }}</em></p>
-                        <p class="description">{{ disease.symptoms|truncatechars:100 }}</p>
-                        <a href="{% url 'pest_detail' disease.disease_id %}" class="btn">View Details</a>
-                    </div>
-                </div>
-                {% empty %}
-                <p>No diseases available.</p>
-                {% endfor %}
+            <div class="filter-options">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Insects</button>
+                <button class="filter-btn">Diseases</button>
             </div>
-        </section>
-    </main>
+        </div>
+    </div>
 
-    <footer>
-        <p>&copy; 2025 Mango Pest & Disease Guide | Developed by Student Team</p>
-    </footer>
-</body>
-</html>
+    <!-- Pests Section -->
+    <section id="pests-section">
+        <h1>Pests</h1>
+        <ul class="pest-list" id="pest-list">
+            {% for pest in pests %}
+                <li class="pest-item">
+                    <div class="pest-card">
+                        <div class="pest-image">
+                            {% if pest.image_url %}
+                            <img src="{{ pest.image_url }}" alt="{{ pest.common_name }}">
+                            {% else %}
+                            <img src="https://via.placeholder.com/300x200?text={{ pest.common_name }}" alt="{{ pest.common_name }}">
+                            {% endif %}
+                        </div>
+                        <div class="pest-content">
+                            <h3>{{ pest.common_name }}</h3>
+                            <p class="scientific-name"><em>{{ pest.scientific_name }}</em></p>
+                            <p>{{ pest.description|truncatechars:150 }}</p>
+                            <div class="pest-details">
+                                <p><strong>Hosts:</strong> {{ pest.hosts }}</p>
+                                <a href="{% url 'pest_detail' pest_id=pest.pest_id %}" class="btn btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- Diseases Section -->
+    <section id="diseases-section">
+        <h1>Diseases</h1>
+        <ul class="pest-list" id="disease-list">
+            {% for disease in diseases %}
+                <li class="pest-item">
+                    <div class="pest-card">
+                        <div class="pest-image">
+                            {% if disease.image_url %}
+                            <img src="{{ disease.image_url }}" alt="{{ disease.common_name }}">
+                            {% else %}
+                            <img src="https://via.placeholder.com/300x200?text={{ disease.common_name }}" alt="{{ disease.common_name }}">
+                            {% endif %}
+                        </div>
+                        <div class="pest-content">
+                            <h3>{{ disease.common_name }}</h3>
+                            <p class="scientific-name"><em>{{ disease.scientific_name }}</em></p>
+                            <p>{{ disease.symptoms|truncatechars:150 }}</p>
+                            <div class="pest-details">
+                                <p><strong>Type:</strong> {{ disease.type }}</p>
+                                <a href="{% url 'disease_detail' id=disease.disease_id %}" class="btn btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+</div>
+
+<style>
+.pest-library {
+    margin-bottom: 3rem;
+}
+
+.library-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.search-filter {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 20px;
+    padding-right: 50px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 1rem;
+}
+
+.search-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+}
+
+.filter-options {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    background: #f1f1f1;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#pests-section, #diseases-section {
+    margin-top: 3rem;
+}
+
+#pests-section h1, #diseases-section h1 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.pest-item {
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.pest-card {
+    display: flex;
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.pest-image {
+    flex: 0 0 300px;
+}
+
+.pest-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pest-content {
+    padding: 1.5rem;
+    flex: 1;
+}
+
+.scientific-name {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+}
+
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.no-results i {
+    font-size: 3rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .pest-card {
+        flex-direction: column;
+    }
+    
+    .pest-

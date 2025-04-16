@@ -1,3 +1,5 @@
+import os
+
 """
 Django settings for proj_mango project.
 
@@ -124,3 +126,17 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "app_mango/static"),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+
+INSTALLED_APPS = [
+
+    'app_pests',  # must be included
+]
