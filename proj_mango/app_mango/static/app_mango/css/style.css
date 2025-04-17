@@ -546,6 +546,9 @@ h1.references {
     font-size: 1.4rem;
 }
 
+.reference-list {
+    list-style-type: disc;
+}
 
 .reference-list li {
     margin-bottom: 1.2rem;
@@ -629,4 +632,4 @@ footer {
     .info-card {
         padding: 1.5rem;
     }
-}
+}  

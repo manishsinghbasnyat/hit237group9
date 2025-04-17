@@ -113,7 +113,7 @@ disease1 = DiseaseInfo(
     similar_to="Thrips, oedema, nutritional disorders (calcium).",
     control_strategies="Pruning, orchard hygiene, fungicides (mancozeb, copper, strobilurins).",
     life_cycle="Spores germinate in moist conditions. Latent infections in fruit activate during ripening.",
-    impact="Most important fungal disease of mango; can severely reduce yield and marketability.",
+    impact="Most common fungal disease for mango; can severely reduce yield and marketability.",
     image_url="images/Anthracnose.webp"
 )
 
