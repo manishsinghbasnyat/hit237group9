@@ -1,139 +1,101 @@
+{% extends "app_mango/base.html" %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ item.common_name }} - Mango Pest & Disease Guide</title>
-    <link rel="stylesheet" href="{% static 'app_mango/css/style.css' %}">
-    
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <h1>Mango Pest & Disease Guide</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'pest_list' %}">Pests & Diseases</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'references' %}">References</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main class="container detail-page">
-        <div class="breadcrumb">
-            <a href="{% url 'pest_list' %}">← Back to Pests & Diseases</a>
+{% block title %}{{ item.common_name }} - Mango Pest & Disease Guide{% endblock %}
+
+{% block content %}
+<main class="container detail-page">
+    <div class="breadcrumb">
+        <a href="{% url 'pest_list' %}">← Back to Pests & Diseases</a>
+    </div>
+
+    <div class="detail-container">
+        <div class="detail-header">
+            <div class="detail-info">
+                <h1>{{ item.common_name }}</h1>
+                <p class="scientific-name"><em>{{ item.scientific_name }}</em></p>
+                <p class="family-name">{% if item.family %}Family: {{ item.family }}{% endif %}</p>
+                <p class="type">{% if item.type %}Type: {{ item.type }}{% endif %}</p>
+            </div>
+            {% if item.image_url %}
+            <div class="detail-image">
+                <img src="{% static item.image_url %}" alt="{{ item.common_name }}">
+            </div>
+            {% endif %}
         </div>
 
-        <div class="detail-container">
-            <div class="detail-header">
-                <div class="detail-info">
-                    <h1>{{ item.common_name }}</h1>
-                    <p class="scientific-name"><em>{{ item.scientific_name }}</em></p>
-                    <p class="family-name">{% if item.family %}Family: {{ item.family }}{% endif %}</p>
-                    <p class="type">{% if item.type %}Type: {{ item.type }}{% endif %}</p>
-                </div>
-                {% if item.image_url %}
-                <div class="detail-image">
-                    <img src="{% static item.image_url %}" alt="{{ item.common_name }}">
-                </div>
-                {% endif %}
+        <div class="detail-content">
+            {% if item.pest_id %}
+            <!-- Pest specific content -->
+            <div class="detail-section">
+                <h2>Description</h2>
+                <p>{{ item.description }}</p>
             </div>
-
-            <div class="detail-content">
-                {% if item.pest_id %}
-
-                <!-- Pest specific content -->
-                <div class="detail-section">
-                    <h2>Description</h2>
-                    <p>{{ item.description }}</p>
-                </div>
-
-                <div class="detail-section">
-                    <h2>Life Cycle</h2>
-                    <p>{{ item.life_cycle }}</p>
-                </div>
-
-                <div class="detail-section">
-                    <h2>Damage</h2>
-                    <p>{{ item.damage_description }}</p>
-                </div>
-
-                <div class="detail-section">
-                    <h2>Importance</h2>
-                    <p>{{ item.importance }}</p>
-                </div>
-
-                <div class="detail-section">
-                    <h2>Host Plants</h2>
-                    <p>{{ item.hosts }}</p>
-                </div>
-
-                <div class="detail-section">
-                    <h2>Critical Control Period</h2>
-                    <p>{{ item.critical_control_period }}</p>
-                </div>
-
-                <div class="detail-section">
-                    <h2>Monitoring Methods</h2>
-                    <p>{{ item.monitoring }}</p>
-                </div>
-
-                {% if item.comments %}
-                <div class="detail-section">
-                    <h2>Additional Comments</h2>
-                    <p>{{ item.comments }}</p>
-                </div>
-                {% endif %}
-                {% else %}
-                
-                <!-- Disease specific content -->
-                <div class="detail-section">
-                    <h2>Symptoms</h2>
-                    <p>{{ item.symptoms }}</p>
-                </div>
-
-                <div class="detail-section">
-                    <h2>Distribution</h2>
-                    <p>{{ item.distribution }}</p>
-                </div>
-
-                <div class="detail-section">
-                    <h2>Favorable Conditions</h2>
-                    <p>{{ item.favoured_by }}</p>
-                </div>
-
-                <div class="detail-section">
-                    <h2>Similar As</h2>
-                    <p>{{ item.similar_to }}</p>
-                </div>
-
-                <div class="detail-section">
-                    <h2>Control Strategies</h2>
-                    <p>{{ item.control_strategies }}</p>
-                </div>
-
-                <div class="detail-section">
-                    <h2>Life Cycle</h2>
-                    <p>{{ item.life_cycle }}</p>
-                </div>
-
-                {% if item.impact %}
-                <div class="detail-section">
-                    <h2>Impact</h2>
-                    <p>{{ item.impact }}</p>
-                </div>
-                {% endif %}
-                {% endif %}
+            <div class="detail-section">
+                <h2>Life Cycle</h2>
+                <p>{{ item.life_cycle }}</p>
             </div>
+            <div class="detail-section">
+                <h2>Damage</h2>
+                <p>{{ item.damage_description }}</p>
+            </div>
+            <div class="detail-section">
+                <h2>Importance</h2>
+                <p>{{ item.importance }}</p>
+            </div>
+            <div class="detail-section">
+                <h2>Host Plants</h2>
+                <p>{{ item.hosts }}</p>
+            </div>
+            <div class="detail-section">
+                <h2>Critical Control Period</h2>
+                <p>{{ item.critical_control_period }}</p>
+            </div>
+            <div class="detail-section">
+                <h2>Monitoring Methods</h2>
+                <p>{{ item.monitoring }}</p>
+            </div>
+            {% if item.comments %}
+            <div class="detail-section">
+                <h2>Additional Comments</h2>
+                <p>{{ item.comments }}</p>
+            </div>
+            {% endif %}
+            {% else %}
+            <!-- Disease specific content -->
+            <div class="detail-section">
+                <h2>Symptoms</h2>
+                <p>{{ item.symptoms }}</p>
+            </div>
+            <div class="detail-section">
+                <h2>Distribution</h2>
+                <p>{{ item.distribution }}</p>
+            </div>
+            <div class="detail-section">
+                <h2>Favorable Conditions</h2>
+                <p>{{ item.favoured_by }}</p>
+            </div>
+            <div class="detail-section">
+                <h2>Similar As</h2>
+                <p>{{ item.similar_to }}</p>
+            </div>
+            <div class="detail-section">
+                <h2>Control Strategies</h2>
+                <p>{{ item.control_strategies }}</p>
+            </div>
+            <div class="detail-section">
+                <h2>Life Cycle</h2>
+                <p>{{ item.life_cycle }}</p>
+            </div>
+            {% if item.impact %}
+            <div class="detail-section">
+                <h2>Impact</h2>
+                <p>{{ item.impact }}</p>
+            </div>
+            {% endif %}
+            {% endif %}
         </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Mango Pest & Disease Guide | Developed by Team 9</p>
-      </footer>
-</body>
-</html>
+    </div>
+</main>
+{% endblock %}

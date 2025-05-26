@@ -1,101 +1,74 @@
+{% extends "app_mango/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mango Pests & Diseases</title>
-    <link rel="stylesheet" href="{% static 'app_mango/css/style.css' %}">
-    
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <h1>Mango Pest & Disease Guide</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'pest_list' %}" class="active">Pests & Diseases</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'references' %}">References</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Section Navigation -->
-    <div class="section-nav">
-        
-        <a href="#pests" class="section-link">Mango Pests</a>
-        <a href="#diseases" class="section-link">Mango Diseases</a>
-    </div>
+{% block title %}Mango Pests & Diseases{% endblock %}
 
-    <main class="container">
+{% block nav_pest_active %}class="active"{% endblock %}
 
-        <!-- Mango Pests Section -->
-        <section id="pests" class="pest-section">
-            <h2 class="section-title">Mango Pests</h2>
-            <div class="card-container">
-                {% for pest in pests %}
-                <div class="card">
-                    {% if pest.image_url %}
-                    <div class="card-image">
-                        <img src="{% static pest.image_url %}" alt="{{ pest.common_name }}">
-                    </div>
-                    {% else %}
-                    <div class="card-image placeholder">
-                        <p>No image available</p>
-                    </div>
-                    {% endif %}
-                    <div class="card-content">
-                        <h3>{{ pest.common_name }}</h3>
-                        <p class="scientific-name"><em>{{ pest.scientific_name }}</em></p>
-                        <p class="description">{{ pest.description|truncatechars:100 }}</p>
-                        <a href="{% url 'pest_detail' item_type='pest' item_id=pest.pest_id %}" class="btn">View Details</a>
+{% block content %}
+<!-- Section Navigation -->
+<div class="section-nav">
+    <a href="#pests" class="section-link">Mango Pests</a>
+    <a href="#diseases" class="section-link">Mango Diseases</a>
+</div>
 
+<main class="container">
 
-                    </div>
+    <!-- Mango Pests Section -->
+    <section id="pests" class="pest-section">
+        <h2 class="section-title">Mango Pests</h2>
+        <div class="card-container">
+            {% for pest in pests %}
+            <div class="card">
+                {% if pest.image_url %}
+                <div class="card-image">
+                    <img src="{% static pest.image_url %}" alt="{{ pest.common_name }}">
                 </div>
-                {% empty %}
-                <p>No pests available.</p>
-                {% endfor %}
-            </div>
-        </section>
-
-        <!-- Mango Diseases Section -->
-        <section id="diseases" class="disease-section">
-            <h2 class="section-title">Mango Diseases</h2>
-            <div class="card-container">
-                {% for disease in diseases %}
-                <div class="card">
-                    {% if disease.image_url %}
-                    <div class="card-image">
-                        <img src="{% static disease.image_url %}" alt="{{ disease.common_name }}">
-                    </div>
-                    {% else %}
-                    <div class="card-image placeholder">
-                        <p>No image available</p>
-                    </div>
-                    {% endif %}
-                    <div class="card-content">
-                        <h3>{{ disease.common_name }}</h3>
-                        <p class="scientific-name"><em>{{ disease.scientific_name }}</em></p>
-                        <p class="description">{{ disease.symptoms|truncatechars:100 }}</p>
-                        <a href="{% url 'pest_detail' item_type='disease' item_id=disease.disease_id %}" class="btn">View Details</a>
-
-
-                    </div>
+                {% else %}
+                <div class="card-image placeholder">
+                    <p>No image available</p>
                 </div>
-                {% empty %}
-                <p>No diseases available.</p>
-                {% endfor %}
+                {% endif %}
+                <div class="card-content">
+                    <h3>{{ pest.common_name }}</h3>
+                    <p class="scientific-name"><em>{{ pest.scientific_name }}</em></p>
+                    <p class="description">{{ pest.description|truncatechars:100 }}</p>
+                    <a href="{% url 'pest_detail' item_type='pest' item_id=pest.pest_id %}" class="btn">View Details</a>
+                </div>
             </div>
-        </section>
+            {% empty %}
+            <p>No pests available.</p>
+            {% endfor %}
+        </div>
+    </section>
 
-    </main>
+    <!-- Mango Diseases Section -->
+    <section id="diseases" class="disease-section">
+        <h2 class="section-title">Mango Diseases</h2>
+        <div class="card-container">
+            {% for disease in diseases %}
+            <div class="card">
+                {% if disease.image_url %}
+                <div class="card-image">
+                    <img src="{% static disease.image_url %}" alt="{{ disease.common_name }}">
+                </div>
+                {% else %}
+                <div class="card-image placeholder">
+                    <p>No image available</p>
+                </div>
+                {% endif %}
+                <div class="card-content">
+                    <h3>{{ disease.common_name }}</h3>
+                    <p class="scientific-name"><em>{{ disease.scientific_name }}</em></p>
+                    <p class="description">{{ disease.symptoms|truncatechars:100 }}</p>
+                    <a href="{% url 'pest_detail' item_type='disease' item_id=disease.disease_id %}" class="btn">View Details</a>
+                </div>
+            </div>
+            {% empty %}
+            <p>No diseases available.</p>
+            {% endfor %}
+        </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2025 Mango Pest & Disease Guide | Developed by Team 9</p>
-      </footer>
-</body>
-</html>
+</main>
+{% endblock %}
