@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     
     # My Apps
      'catalog',
+     'survey'
    
 ]
 
@@ -60,7 +61,7 @@ ROOT_URLCONF = 'proj_mango.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/"templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,8 +125,9 @@ STATIC_URL = 'static/'
 import os
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'catalog', 'static'),
+    BASE_DIR / "static",  # Project-level static
 ]
+STATIC_URL = '/static/'
 
 
 # Default primary key field type
