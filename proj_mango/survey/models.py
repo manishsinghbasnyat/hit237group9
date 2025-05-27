@@ -26,7 +26,7 @@ class SurveillanceRecord(models.Model):
     inspector = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     pests_found = models.ManyToManyField(Pest, blank=True)
     diseases_found = models.ManyToManyField(Disease, blank=True)
-    notes = models.TextField(blank=True)
+    notes = models.TextField(blank=True, max_length=1000)
     image = models.ImageField(upload_to='survey/', blank=True, null=True)
 
     def __str__(self):
