@@ -29,7 +29,7 @@
         </div>
 
         <div class="detail-content">
-            {% if item|has_field:"hosts" %}
+            {% if item_type == 'pest' %}
             <!-- Pest specific content -->
             <div class="detail-section">
                 <h2>Description</h2>

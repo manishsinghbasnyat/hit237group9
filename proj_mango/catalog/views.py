@@ -25,7 +25,8 @@ def pest_detail_view(request, item_type, item_id):
     else:
         return HttpResponseNotFound("Page not Found")
 
-    return render(request, 'catalog/detail.html', {'item': item})
+    # Pass item_type to the template for template logic
+    return render(request, 'catalog/detail.html', {'item': item, 'item_type': item_type})
 
 # About page view
 def about(request):

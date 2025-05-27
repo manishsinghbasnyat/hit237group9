@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',   
     
     # My Apps
-     'app_mango',
+     'catalog',
    
 ]
 
@@ -124,7 +124,7 @@ STATIC_URL = 'static/'
 import os
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'app_mango', 'static'),
+    os.path.join(BASE_DIR, 'catalog', 'static'),
 ]
 
 
