@@ -1,12 +1,11 @@
 {% extends "base.html" %}
-
 {% load static %}
 
 {% block title %}Mango Pest & Disease Guide{% endblock %}
-
 {% block nav_home_active %}class="active"{% endblock %}
 
 {% block content %}
+
 <section class="hero">
     <div class="hero-content">
         <h2>Welcome to the Mango Pest & Disease Guide</h2>
@@ -14,6 +13,36 @@
         <a href="{% url 'pest_list' %}" class="btn">View Pests & Diseases</a>
     </div>
 </section>
+
+{% if user.is_authenticated and dashboard %}
+  <section class="dashboard">
+    <h2>Your Dashboard</h2>
+    <ul>
+      <li><strong>Your Farms:</strong> {{ user_farms|length }}</li>
+      <li><strong>Surveys completed:</strong> {{ survey_count }}</li>
+    </ul>
+    {% if user_farms %}
+      <h3>Your Farms</h3>
+      <ul>
+        {% for membership in user_farms %}
+          <li>{{ membership.farm.name }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>You are not associated with any farms.</p>
+    {% endif %}
+    {% if user_surveys %}
+      <h3>Recent Surveys</h3>
+      <ul>
+        {% for survey in user_surveys|slice:":5" %}
+          <li>{{ survey.farm.name }} — {{ survey.date }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>You haven’t submitted any surveys yet.</p>
+    {% endif %}
+  </section>
+{% endif %}
 
 <section class="overview">
     <h2>Overview of Mango Pests and Diseases</h2>
