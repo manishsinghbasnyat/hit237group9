@@ -1,0 +1,31 @@
+{% extends "catalog/base.html" %}
+
+{% load static %}
+
+{% block title %}Mango Pest & Disease Guide{% endblock %}
+
+{% block nav_home_active %}class="active"{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h2>Welcome to the Mango Pest & Disease Guide</h2>
+        <p>A comprehensive resource for identifying and managing common mango pests and diseases in the Northern Territory.</p>
+        <a href="{% url 'pest_list' %}" class="btn">View Pests & Diseases</a>
+    </div>
+</section>
+
+<section class="overview">
+    <h2>Overview of Mango Pests and Diseases</h2>
+    <div class="overview-content">
+        <div class="info-card">
+            <h3>About Pests</h3>
+            <p>Mango crops are susceptible to various pests that can significantly impact yield and fruit quality. This guide covers identification, life cycles, and management strategies for the most common mango pests in Australia.</p>
+        </div>
+        <div class="info-card">
+            <h3>About Diseases</h3>
+            <p>Fungal, bacterial, and viral diseases can affect mango trees throughout their growing cycle. Learn to identify symptoms and implement effective control measures to protect your mango crop.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
