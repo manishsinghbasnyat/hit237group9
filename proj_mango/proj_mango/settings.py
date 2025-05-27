@@ -58,6 +58,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+LOGIN_REDIRECT_URL = '/' # Redirects users to homepage after login
+LOGOUT_REDIRECT_URL = '/login/' # Redirects users to login page after logging out
+
 ROOT_URLCONF = 'proj_mango.urls'
 
 TEMPLATES = [
