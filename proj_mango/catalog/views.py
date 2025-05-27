@@ -1,10 +1,26 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Pest, Disease
 from django.http import HttpResponseNotFound
+from survey.models import SurveillanceRecord
+from accounts.models import Membership
 
-# Home page view
+# Home page view (dynamic: dashboard for logged-in, public for others)
 def home(request):
-    return render(request, 'catalog/home.html')
+    context = {}
+    if request.user.is_authenticated:
+        user = request.user
+        survey_count = SurveillanceRecord.objects.filter(inspector=user).count()
+        user_surveys = SurveillanceRecord.objects.filter(inspector=user)
+        user_farms = Membership.objects.filter(user=user).select_related('farm')
+        context.update({
+            'dashboard': True,
+            'survey_count': survey_count,
+            'user_surveys': user_surveys,
+            'user_farms': user_farms,
+        })
+    else:
+        context['dashboard'] = False
+    return render(request, 'home.html', context)
 
 # Pest/Disease list view
 def pest_list_view(request):
