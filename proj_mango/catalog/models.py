@@ -26,7 +26,7 @@ class Disease(models.Model):
     ]
     common_name = models.CharField(max_length=100)
     scientific_name = models.CharField(max_length=100)
-    type = models.CharField(max_length=20, choices=DISEASE_TYPES)
+    disease_type = models.CharField(max_length=20, choices=DISEASE_TYPES)  # Changed `type` to `disease_type`
     symptoms = models.TextField()
     distribution = models.CharField(max_length=200)
     favoured_by = models.CharField(max_length=200)
