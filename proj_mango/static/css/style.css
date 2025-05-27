@@ -633,3 +633,13 @@ footer {
         padding: 1.5rem;
     }
 }  
+
+
+/* For Forms */
+
+.scrollable-checkboxes {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
