@@ -11,6 +11,9 @@
         <h2>Welcome to the Mango Pest & Disease Guide</h2>
         <p>A comprehensive resource for identifying and managing common mango pests and diseases in the Northern Territory.</p>
         <a href="{% url 'pest_list' %}" class="btn">View Pests & Diseases</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'create_surveillancerecord_view' %}" class="btn">Record a Survey</a>
+        {% endif %}
     </div>
 </section>
 
