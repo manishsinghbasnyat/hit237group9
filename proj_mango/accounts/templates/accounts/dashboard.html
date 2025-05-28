@@ -1,38 +1,4 @@
 {% extends "base.html" %}
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-{% block content %}
-  <h2>Welcome, {{ user.username }}!</h2>
-
-  <h3>Dashboard Overview</h3>
-  <ul>
-    <li><strong>Number of surveys you have done:</strong> {{ survey_count }}</li>
-    <li><strong>Farms you are a member of:</strong>
-      <ul>
-        {% for membership in user_farms %}
-          <li>{{ membership.farm.name }}</li>
-        {% empty %}
-          <li>You are not a member of any farm.</li>
-        {% endfor %}
-      </ul>
-    </li>
-  </ul>
-
-  <h3>Your Surveys</h3>
-  <ul>
-    {% for survey in user_surveys %}
-      <li>
-        {{ survey.farm.name }} — {{ survey.date }}
-        <!-- Add more details as needed -->
-      </li>
-    {% empty %}
-      <li>You haven’t submitted any surveys yet.</li>
-    {% endfor %}
-  </ul>
-=======
-=======
->>>>>>> 90797b708ce9de019ae888911f2c6fcd7cc8e298
 {% load static %}
 
 {% block title %}Dashboard{% endblock %}
@@ -59,8 +25,4 @@
         </div>
     </div>
 </section>
-<<<<<<< HEAD
->>>>>>> ea284e1 (Correct filepath)
-=======
->>>>>>> 90797b708ce9de019ae888911f2c6fcd7cc8e298
 {% endblock %}
