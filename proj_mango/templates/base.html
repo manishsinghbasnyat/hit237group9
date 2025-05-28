@@ -9,6 +9,7 @@
     {% block extra_head %}{% endblock %}
   </head>
   <body>
+<<<<<<< HEAD
     <header>
       <nav>
         <div class="logo">
@@ -70,5 +71,68 @@
     <footer>
       <p>&copy; 2025 Mango Pest & Disease Guide | Developed by Team 9</p>
     </footer>
+=======
+    <div class="site-wrapper"><!-- wrapper added for footer positioning -->
+
+      <header>
+        <nav>
+          <div class="logo">
+            <h1>Mango Pest & Disease Guide</h1>
+          </div>
+          <ul class="nav-links">
+            <li>
+              <a
+                href="{% url 'home' %}"
+                class="{% block nav_home_active %}{% endblock %}"
+                >Home</a>
+            </li>
+            <li><a href="{% url 'pest_list' %}">Pests & Diseases</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'references' %}">References</a></li>
+
+            {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'create_surveillancerecord_view' %}">Survey</a>
+            </li>
+            <li>
+              <form
+                action="{% url 'logout_view' %}"
+                method="post"
+                style="display: inline"
+              >
+                {% csrf_token %}
+                <button
+                  type="submit"
+                  style="
+                    background: none;
+                    border: none;
+                    color: inherit;
+                    cursor: pointer;
+                    padding: 0;
+                  "
+                >
+                  Logout
+                </button>
+              </form>
+            </li>
+            {% else %}
+            <li><a href="{% url 'login_view' %}">Login</a></li>
+            <li><a href="{% url 'register_view' %}">Register</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        {% block content %}
+        <!-- Page-specific content goes here -->
+        {% endblock %}
+      </main>
+
+      <footer>
+        <p>&copy; 2025 Mango Pest & Disease Guide | Developed by Team 9</p>
+      </footer>
+    </div> <!-- end of .site-wrapper -->
+>>>>>>> ea284e1 (Correct filepath)
   </body>
 </html>
