@@ -1,0 +1,13 @@
+# Ignore Python bytecode
+__pycache__/
+*.pyc
+
+# Ignore virtual environments
+env_assessment2/
+env_assessment3/
+.venv/
+.env/
+
+# Ignore OS/system files
+.DS_Store
+Thumbs.db
