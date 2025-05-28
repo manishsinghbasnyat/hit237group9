@@ -11,38 +11,54 @@
         <h2>Welcome to the Mango Pest & Disease Guide</h2>
         <p>A comprehensive resource for identifying and managing common mango pests and diseases in the Northern Territory.</p>
         <a href="{% url 'pest_list' %}" class="btn">View Pests & Diseases</a>
+<<<<<<< HEAD
+=======
+        {% if user.is_authenticated %}
+        <a href="{% url 'create_surveillancerecord_view' %}" class="btn">Record a Survey</a>
+        {% endif %}
+>>>>>>> 90797b708ce9de019ae888911f2c6fcd7cc8e298
     </div>
 </section>
 
 {% if user.is_authenticated and dashboard %}
-  <section class="dashboard">
-    <h2>Your Dashboard</h2>
-    <ul>
-      <li><strong>Your Farms:</strong> {{ user_farms|length }}</li>
-      <li><strong>Surveys completed:</strong> {{ survey_count }}</li>
-    </ul>
-    {% if user_farms %}
+<section class="dashboard">
+  <h2 class="dashboard-title">Welcome, {{ user.first_name }}!</h2>
+  
+  <div class="dashboard-cards">
+    <div class="dashboard-card">
       <h3>Your Farms</h3>
-      <ul>
-        {% for membership in user_farms %}
-          <li>{{ membership.farm.name }}</li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p>You are not associated with any farms.</p>
-    {% endif %}
-    {% if user_surveys %}
-      <h3>Recent Surveys</h3>
-      <ul>
-        {% for survey in user_surveys|slice:":5" %}
-          <li>{{ survey.farm.name }} — {{ survey.date }}</li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p>You haven’t submitted any surveys yet.</p>
-    {% endif %}
-  </section>
+      <p>{{ user_farms|length }} registered</p>
+    </div>
+    <div class="dashboard-card">
+      <h3>Surveys Completed</h3>
+      <p>{{ survey_count }}</p>
+    </div>
+  </div>
+
+  <div class="dashboard-section">
+    <h3>Farms</h3>
+    <ul class="dashboard-list">
+      {% for membership in user_farms %}
+        <li>{{ membership.farm.name }}</li>
+      {% empty %}
+        <li>No farms joined.</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="dashboard-section">
+    <h3>Recent Surveys</h3>
+    <ul class="dashboard-list">
+      {% for survey in user_surveys|slice:":5" %}
+        <li>{{ survey.farm.name }} — {{ survey.date }}</li>
+      {% empty %}
+        <li>No surveys submitted yet.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
 {% endif %}
+
 
 <section class="overview">
     <h2>Overview of Mango Pests and Diseases</h2>

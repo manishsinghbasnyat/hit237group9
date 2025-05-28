@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+<<<<<<< HEAD
+<<<<<<< HEAD
 
 {% block content %}
   <h2>Welcome, {{ user.username }}!</h2>
@@ -28,4 +30,37 @@
       <li>You haven’t submitted any surveys yet.</li>
     {% endfor %}
   </ul>
+=======
+=======
+>>>>>>> 90797b708ce9de019ae888911f2c6fcd7cc8e298
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<section class="dashboard-section">
+    <div class="container">
+        <h2 class="dashboard-title">Welcome to Your Dashboard</h2>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <h3>Total Farms</h3>
+                <p class="dashboard-count">{{ farm_count }}</p>
+            </div>
+            <div class="dashboard-card">
+                <h3>Survey Records</h3>
+                <p class="dashboard-count">{{ survey_count }}</p>
+            </div>
+        </div>
+
+        <div class="dashboard-links">
+            <a href="{% url 'register_view' %}" class="btn">Register New User</a>
+            <a href="{% url 'profile_view' %}" class="btn">Your Profile</a>
+        </div>
+    </div>
+</section>
+<<<<<<< HEAD
+>>>>>>> ea284e1 (Correct filepath)
+=======
+>>>>>>> 90797b708ce9de019ae888911f2c6fcd7cc8e298
 {% endblock %}
