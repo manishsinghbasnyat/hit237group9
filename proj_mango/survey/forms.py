@@ -6,7 +6,7 @@ from django.utils import timezone
 class SurveillanceRecordForm(forms.ModelForm):
     class Meta:
         model = SurveillanceRecord
-        fields = ['farm', 'date', 'pests_found', 'diseases_found', 'notes', 'image']
+        fields = '__all__'
         widgets = {
             'pests_found': forms.CheckboxSelectMultiple,
             'diseases_found': forms.CheckboxSelectMultiple,
