@@ -3,12 +3,12 @@
 {% block title %}New Surveillance Record{% endblock %}
 
 {% block content %}
-<div class="form-container">
+<div class="surveillance-form-container">
   <h2 class="form-title">New Surveillance Record</h2>
 
   {% if messages %}
     {% for message in messages %}
-      <div class="alert alert-success">{{ message }}</div>
+      <div class="form-success">{{ message }}</div>
     {% endfor %}
   {% endif %}
 
@@ -25,33 +25,42 @@
       {{ form.date }}
     </div>
 
-    {# Auto-captured time of inspection, shown as read-only #}
-    {% if form.instance.time %}
-      <div class="form-group">
-        <label>Time of Inspection (auto-captured):</label>
-        <input type="text" class="form-control" value="{{ form.instance.time|default_if_none:'' }}" readonly>
-      </div>
-    {% else %}
-      {% now "H:i:s" as current_time %}
-      <div class="form-group">
-        <label>Time of Inspection (will be auto-captured):</label>
-        <input type="text" class="form-control" value="{{ current_time }}" readonly>
-      </div>
-    {% endif %}
+    <div class="form-group">
+      <label>Time of Inspection (auto-captured):</label>
+      <input type="text"
+             value="{% if form.instance.time %}{{ form.instance.time|default_if_none:'' }}{% else %}{% now 'H:i:s' %}{% endif %}"
+             readonly>
+    </div>
 
     <div class="form-group">
       {{ form.num_trees_inspected.label_tag }}
       {{ form.num_trees_inspected }}
     </div>
 
-    <div class="form-group scroll-box">
+    <!-- Pests Found: Custom Checkbox Rendering for Left Alignment -->
+    <div class="form-group">
       {{ form.pests_found.label_tag }}
-      {{ form.pests_found }}
+      <div class="scroll-box">
+        {% for checkbox in form.pests_found %}
+          <label class="checkbox-label">
+            {{ checkbox.tag }}
+            <span>{{ checkbox.choice_label }}</span>
+          </label>
+        {% endfor %}
+      </div>
     </div>
 
-    <div class="form-group scroll-box">
+    <!-- Diseases Found: Custom Checkbox Rendering for Left Alignment -->
+    <div class="form-group">
       {{ form.diseases_found.label_tag }}
-      {{ form.diseases_found }}
+      <div class="scroll-box">
+        {% for checkbox in form.diseases_found %}
+          <label class="checkbox-label">
+            {{ checkbox.tag }}
+            <span>{{ checkbox.choice_label }}</span>
+          </label>
+        {% endfor %}
+      </div>
     </div>
 
     <div class="form-group">
@@ -60,15 +69,17 @@
     </div>
 
     <div class="form-group">
-      {{ form.image.label_tag }}
-      {{ form.image }}
+      <label for="{{ form.image.id_for_label }}">{{ form.image.label }}</label>
+      <div class="custom-file-upload">
+        <label for="{{ form.image.id_for_label }}" class="upload-label">📤 Upload Image</label>
+        {{ form.image }}
+      </div>
     </div>
 
-    <button type="submit" class="btn">Save Record</button>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-submit">Save Record</button>
+      <a href="{% url 'my_surveys_view' %}" class="btn btn-secondary">View My Surveys</a>
+    </div>
   </form>
-
-  <div>
-    <a href="{% url 'my_surveys_view' %}" class="btn btn-link">View My Surveys</a>
-  </div>
 </div>
 {% endblock %}

@@ -2,6 +2,7 @@
 
 {% block content %}
   <h2 class="survey-details-heading">Survey Details</h2>
+
   <table class="survey-detail-table">
     <tr>
       <th>Farm</th>
@@ -18,38 +19,30 @@
     <tr>
       <th>Pests Found</th>
       <td>
-        {% if record.pests_found.all %}
-          <ul>
-            {% for pest in record.pests_found.all %}
-              <li>{{ pest.common_name }}</li>
-            {% empty %}
-              <li>None</li>
-            {% endfor %}
-          </ul>
-        {% else %}
-          None
-        {% endif %}
+        {% with record.pests_found.all as pests %}
+          {% if pests %}
+            {{ pests|join:", " }}
+          {% else %}
+            None
+          {% endif %}
+        {% endwith %}
       </td>
     </tr>
     <tr>
       <th>Diseases Found</th>
       <td>
-        {% if record.diseases_found.all %}
-          <ul>
-            {% for disease in record.diseases_found.all %}
-              <li>{{ disease.common_name }}</li>
-            {% empty %}
-              <li>None</li>
-            {% endfor %}
-          </ul>
-        {% else %}
-          None
-        {% endif %}
+        {% with record.diseases_found.all as diseases %}
+          {% if diseases %}
+            {{ diseases|join:", " }}
+          {% else %}
+            None
+          {% endif %}
+        {% endwith %}
       </td>
     </tr>
     <tr>
       <th>Notes</th>
-      <td>{{ record.notes }}</td>
+      <td>{{ record.notes|default:"None" }}</td>
     </tr>
     <tr>
       <th>Image</th>

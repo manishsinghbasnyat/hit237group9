@@ -10,6 +10,7 @@
             Add a Farm
         {% endif %}
     </h2>
+
     <form method="post" novalidate>
         {% csrf_token %}
         {% for field in form %}
@@ -24,12 +25,16 @@
                 {% endfor %}
             </div>
         {% endfor %}
-        <!-- Dynamic button text: 'Save Changes' for edit, 'Add Farm' for add -->
-        <button type="submit" class="btn btn-primary">
-            {% if farm and farm.pk %}Save Changes{% else %}Add Farm{% endif %}
-        </button>
-        
-        <a href="{% url 'profile_view' %}" class="btn btn-secondary ms-2">Cancel</a>
+
+        <div class="form-group">
+            <!-- Primary Submit Button -->
+            <button type="submit" class="btn btn-primary">
+                {% if farm and farm.pk %}Save Changes{% else %}Add Farm{% endif %}
+            </button>
+
+            <!-- Cancel Button with secondary style -->
+            <a href="{% url 'survey_home' %}" class="btn btn-secondary">Cancel</a>
+        </div>
     </form>
 </div>
 {% endblock %}

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}Login - Mango Pest & Disease Guide{% endblock %}
+
 {% block content %}
 <div class="login-container">
   <h2 class="form-title">Login to Your Account</h2>
@@ -8,7 +10,7 @@
     <div class="form-error">Invalid username or password.</div>
   {% endif %}
 
-  <form method="post" class="form-box">
+  <form method="post" class="styled-form">
     {% csrf_token %}
     <div class="form-group">
       {{ form.username.label_tag }}
@@ -18,7 +20,7 @@
       {{ form.password.label_tag }}
       {{ form.password }}
     </div>
-    <button type="submit" class="btn">Login</button>
+    <button type="submit" class="btn btn-login">Login</button>
   </form>
 
   <p class="form-link">Don’t have an account?

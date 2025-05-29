@@ -4,6 +4,7 @@
 
 {% block content %}
   <h2 class="survey-details-heading">My Surveillance Records</h2>
+
   {% if records %}
     <table class="survey-list-table">
       <thead>
@@ -21,30 +22,22 @@
             <td>{{ record.date|date:"F j, Y" }}</td>
             <td>{{ record.farm.name }}</td>
             <td>
-              {% if record.pests_found.all %}
-                <ul>
-                  {% for pest in record.pests_found.all %}
-                    <li>{{ pest.common_name }}</li>
-                  {% empty %}
-                    <li>None</li>
-                  {% endfor %}
-                </ul>
-              {% else %}
-                None
-              {% endif %}
+              {% with record.pests_found.all as pests %}
+                {% if pests %}
+                  {{ pests|join:", " }}
+                {% else %}
+                  None
+                {% endif %}
+              {% endwith %}
             </td>
             <td>
-              {% if record.diseases_found.all %}
-                <ul>
-                  {% for disease in record.diseases_found.all %}
-                    <li>{{ disease.common_name }}</li>
-                  {% empty %}
-                    <li>None</li>
-                  {% endfor %}
-                </ul>
-              {% else %}
-                None
-              {% endif %}
+              {% with record.diseases_found.all as diseases %}
+                {% if diseases %}
+                  {{ diseases|join:", " }}
+                {% else %}
+                  None
+                {% endif %}
+              {% endwith %}
             </td>
             <td>
               <a href="{% url 'survey_detail_view' record.pk %}" class="btn btn-primary btn-sm">View</a>
@@ -56,6 +49,7 @@
   {% else %}
     <p>No surveys found.</p>
   {% endif %}
+
   <div class="survey-detail-actions">
     <a href="{% url 'create_surveillancerecord_view' %}" class="btn btn-success">Add New Record</a>
   </div>
