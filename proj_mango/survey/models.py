@@ -71,6 +71,12 @@ class SurveillanceRecord(models.Model):
     date = models.DateField(
         help_text="Select a date between 01/01/2000 and today."
     )
+    time = models.TimeField(
+        help_text="Select the time of inspection.",
+        auto_now_add=True,
+        null=False,
+        blank=False
+    )
     inspector = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
@@ -78,13 +84,11 @@ class SurveillanceRecord(models.Model):
         blank=True,
         help_text="The user who conducted the surveillance."
     )
-    
     num_trees_inspected = models.PositiveIntegerField(
         verbose_name="Number of Trees Inspected",
         default=0,
         help_text="Enter the number of trees inspected during this survey."
     )
-    
     pests_found = models.ManyToManyField(
         Pest,
         blank=True,
@@ -107,7 +111,6 @@ class SurveillanceRecord(models.Model):
         help_text="Upload an image (optional)."
     )
 
-
     def __str__(self):
-        return f"Survey at {self.farm.name} on {self.date}"
+        return f"Survey at {self.farm.name} on {self.date} at {self.time.strftime('%H:%M') if self.time else 'Unknown time'}"
 
