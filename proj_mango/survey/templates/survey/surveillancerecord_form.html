@@ -1,88 +1,27 @@
-{% extends 'base.html' %}
-
-{% block title %}New Surveillance Record{% endblock %}
+{% extends "base.html" %}
 
 {% block content %}
-<div class="form-container">
-  <h2 class="form-title">New Surveillance Record</h2>
-
-  {% if messages %}
-    {% for message in messages %}
-      <div class="alert alert-success">{{ message }}</div>
-    {% endfor %}
-  {% endif %}
-
-  {% if form.errors %}
-    <div class="alert alert-danger">
-      <ul>
-        {% for field in form %}
-          {% for error in field.errors %}
-            <li>{{ error }}</li>
-          {% endfor %}
-        {% endfor %}
-        {% for error in form.non_field_errors %}
-          <li>{{ error }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-  {% endif %}
-
-  <form method="post" enctype="multipart/form-data" class="styled-form">
-    {% csrf_token %}
-
-    <div class="form-group">
-      {{ form.farm.label_tag }}
-      {{ form.farm }}
-      {% if form.farm.help_text %}
-        <small class="form-text text-muted">{{ form.farm.help_text }}</small>
-      {% endif %}
+  <section class="dashboard">
+    <h2 class="dashboard-title">Survey Dashboard</h2>
+    
+    <div class="dashboard-cards">
+      <div class="dashboard-card">
+        <h3>Your Farms</h3>
+        <p>{{ user_farms|length }} registered</p>
+      </div>
+      <div class="dashboard-card">
+        <h3>Surveys Completed</h3>
+        <p>{{ survey_count }}</p>
+      </div>
     </div>
 
-    <div class="form-group">
-      {{ form.date.label_tag }}
-      {{ form.date }}
-      {% if form.date.help_text %}
-        <small class="form-text text-muted">{{ form.date.help_text }}</small>
-      {% endif %}
+    <div class="dashboard-links">
+      <a href="{% url 'create_surveillancerecord_view' %}" class="btn">
+        📋 Record a Survey
+      </a>
+      <a href="{% url 'my_surveys_view' %}" class="btn btn-green">
+        📑 My Surveys
+      </a>
     </div>
-
-    <div class="form-group scroll-box">
-      {{ form.pests_found.label_tag }}
-      {{ form.pests_found }}
-      {% if form.pests_found.help_text %}
-        <small class="form-text text-muted">{{ form.pests_found.help_text }}</small>
-      {% endif %}
-    </div>
-
-    <div class="form-group scroll-box">
-      {{ form.diseases_found.label_tag }}
-      {{ form.diseases_found }}
-      {% if form.diseases_found.help_text %}
-        <small class="form-text text-muted">{{ form.diseases_found.help_text }}</small>
-      {% endif %}
-    </div>
-
-    <div class="form-group">
-      {{ form.notes.label_tag }}
-      {{ form.notes }}
-      {% if form.notes.help_text %}
-        <small class="form-text text-muted">{{ form.notes.help_text }}</small>
-      {% endif %}
-    </div>
-
-    <div class="form-group">
-      {{ form.image.label_tag }}
-      {{ form.image }}
-      {% if form.image.help_text %}
-        <small class="form-text text-muted">{{ form.image.help_text }}</small>
-      {% endif %}
-    </div>
-
-    <button type="submit" class="btn">Save Record</button>
-  </form>
-
-  <div>
-    <a href="{% url 'my_surveys_view' %}" class="btn btn-link">View My Surveys</a>
-  </div>
-</div>
+  </section>
 {% endblock %}
