@@ -22,10 +22,6 @@ def register_view(request):
 
     return render(request, 'accounts/register_user.html', {'form': form})
 
-@login_required
-def profile_view(request):
-    return render(request, 'accounts/profile.html')
-
 # Add Farm
 @login_required
 def add_farm_view(request):

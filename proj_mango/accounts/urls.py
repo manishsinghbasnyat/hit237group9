@@ -7,9 +7,8 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login_view'),
     path('logout/', auth_views.LogoutView.as_view(next_page='login_view'), name='logout_view'),
 
-    # User registration and profile
+    # User registration
     path('register/', views.register_view, name='register_view'),
-    path('profile/', views.profile_view, name='profile_view'),
 
     # Farm CRUD
     path('farms/add/', views.add_farm_view, name='add_farm_view'),                                 # Create
