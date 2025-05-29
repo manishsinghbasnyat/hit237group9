@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="farm-detail-container">
+    <h2>Farm Details: {{ farm.name }}</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>Name</th>
+            <td>{{ farm.name }}</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>{{ farm.farm_address }}</td>
+        </tr>
+        <tr>
+            <th>Owner</th>
+            <td>{{ farm.owner.get_full_name }} ({{ farm.owner.username }})</td>
+        </tr>
+        <tr>
+            <th>Contact Number</th>
+            <td>{{ farm.contact_number }}</td>
+        </tr>
+        <tr>
+            <th>Notes</th>
+            <td>{{ farm.notes|linebreaksbr }}</td>
+        </tr>
+    </table>
+    <div class="mt-3">
+        <a href="{% url 'add_farm_view' %}" class="btn btn-secondary">Add Another Farm</a>
+        <a href="/survey/" class="btn btn-primary">Back to Survey Home</a>
+        {% if user == farm.owner %}
+            <a href="{% url 'farm_update_view' farm.pk %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'farm_delete_view' farm.pk %}" class="btn btn-danger">Delete</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

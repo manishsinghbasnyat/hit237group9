@@ -4,24 +4,7 @@ from django.http import HttpResponseNotFound
 from survey.models import SurveillanceRecord, Farm  # Import Farm
 
 def home(request):
-    context = {}
-    if request.user.is_authenticated:
-        user = request.user
-        survey_count = SurveillanceRecord.objects.filter(inspector=user).count()
-        user_surveys = SurveillanceRecord.objects.filter(inspector=user)
-        user_farms = Farm.objects.filter(owner=user)  # Get farms owned by the user
-        farm_count = user_farms.count()
-        context.update({
-            'dashboard': True,
-            'survey_count': survey_count,
-            'user_surveys': user_surveys,
-            'user_farms': user_farms,
-            'farm_count': farm_count,
-        })
-    else:
-        context['dashboard'] = False
-    return render(request, 'home.html', context)
-
+    return render(request, 'home.html')
 
 # Pest/Disease list view
 def pest_list_view(request):

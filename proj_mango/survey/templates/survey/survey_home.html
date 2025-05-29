@@ -20,7 +20,11 @@
         <h3>Farms</h3>
         <ul class="dashboard-list">
           {% for farm in user_farms %}
-            <li>{{ farm.name }}</li>
+            <li>
+              <a href="{% url 'farm_detail' farm.pk %}">
+                {{ farm.name }}
+              </a>
+            </li>
           {% empty %}
             <li>No farms joined.</li>
           {% endfor %}
@@ -48,6 +52,9 @@
       </a>
       <a href="{% url 'my_surveys_view' %}" class="btn btn-green">
         📑 My Surveys
+      </a>
+      <a href="{% url 'add_farm_view' %}" class="btn btn-blue">
+        ➕ Add a Farm
       </a>
     </div>
   </section>

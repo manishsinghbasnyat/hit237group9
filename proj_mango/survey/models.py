@@ -41,6 +41,20 @@ class Farm(models.Model):
         blank=True,
         help_text="Additional notes (optional)."
     )
+    # --- New compulsory fields ---
+    land_area = models.DecimalField(
+        max_digits=10,  # Total number of digits
+        decimal_places=2,  # Number of digits after the decimal point
+        blank=False,
+        default=0.0,
+        help_text="Land area (acres or hectares)."
+    )
+    num_trees_est = models.PositiveIntegerField(
+        verbose_name="Number of Trees (Estimated)",
+        default=0,
+        blank=False,
+        help_text="Estimated number of trees."
+    )
 
     def __str__(self):
         return self.name
