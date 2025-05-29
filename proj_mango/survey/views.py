@@ -9,7 +9,7 @@ def survey_home_view(request):
     user = request.user
     survey_count = SurveillanceRecord.objects.filter(inspector=user).count()
     user_surveys = SurveillanceRecord.objects.filter(inspector=user)
-    user_farms = Farm.objects.filter(owner=user)  # Adjust if your user/farm relationship is different
+    user_farms = Farm.objects.filter(owner=user) 
     farm_count = user_farms.count()
     context = {
         'survey_count': survey_count,
