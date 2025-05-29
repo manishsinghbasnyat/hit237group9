@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Survey Detail{% endblock %}
+
+{% block content %}
+<h2>Survey at {{ record.farm.name }} on {{ record.date }}</h2>
+<p><strong>Pests found:</strong> 
+  {% for pest in record.pests_found.all %}
+    {{ pest }}{% if not forloop.last %}, {% endif %}
+  {% empty %}
+    None
+  {% endfor %}
+</p>
+<p><strong>Diseases found:</strong> 
+  {% for disease in record.diseases_found.all %}
+    {{ disease }}{% if not forloop.last %}, {% endif %}
+  {% empty %}
+    None
+  {% endfor %}
+</p>
+<p><strong>Notes:</strong> {{ record.notes|linebreaks }}</p>
+{% if record.image %}
+  <img src="{{ record.image.url }}" alt="Survey image" class="survey-image">
+{% endif %}
+<a href="{% url 'my_surveys_view' %}" class="btn btn-link">Back to My Surveys</a>
+{% endblock %}

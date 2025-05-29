@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Survey Dashboard</h2>
+  <ul>
+    <li>
+      <a href="{% url 'create_surveillancerecord_view' %}">Record a survey</a>
+    </li>
+    <li>
+      <a href="{% url 'my_surveys_view' %}">My surveys</a>
+    </li>
+  </ul>
+{% endblock %}
