@@ -861,4 +861,74 @@ footer {
     transform: translateY(25px); 
 }
 
+/* 
+survey/static/survey/survey.css
 
+.form-container {
+    max-width: 500px;
+    margin: 2em auto;
+    padding: 2em;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.form-title {
+    margin-bottom: 1em;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1em;
+}
+
+.styled-form input,
+.styled-form select,
+.styled-form textarea {
+    width: 100%;
+    padding: 0.5em;
+    margin-top: 0.2em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn {
+    background: #007bff;
+    color: #fff;
+    padding: 0.5em 1.5em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-link {
+    background: none;
+    color: #007bff;
+    border: none;
+    padding: 0;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.survey-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.survey-list li {
+    margin-bottom: 0.5em;
+}
+
+.alert {
+    padding: 0.75em;
+    background: #d4edda;
+    color: #155724;
+    border-radius: 4px;
+    margin-bottom: 1em;
+}
+
+img.survey-image {
+    max-width: 400px;
+    display: block;
+    margin: 1em 0;
+} */
