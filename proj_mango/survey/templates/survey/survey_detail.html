@@ -1,70 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2 class="survey-details-heading">Survey Details</h2>
-  <table class="survey-detail-table">
-    <tr>
-      <th>Farm</th>
-      <td>{{ record.farm.name }}</td>
-    </tr>
-    <tr>
-      <th>Date</th>
-      <td>{{ record.date|date:"F j, Y" }}</td>
-    </tr>
-    <tr>
-      <th>Inspector</th>
-      <td>{{ record.inspector.get_full_name|default:record.inspector.username }}</td>
-    </tr>
-    <tr>
-      <th>Pests Found</th>
-      <td>
-        {% if record.pests_found.all %}
-          <ul>
-            {% for pest in record.pests_found.all %}
-              <li>{{ pest.common_name }}</li>
-            {% empty %}
-              <li>None</li>
-            {% endfor %}
-          </ul>
-        {% else %}
-          None
-        {% endif %}
-      </td>
-    </tr>
-    <tr>
-      <th>Diseases Found</th>
-      <td>
-        {% if record.diseases_found.all %}
-          <ul>
-            {% for disease in record.diseases_found.all %}
-              <li>{{ disease.common_name }}</li>
-            {% empty %}
-              <li>None</li>
-            {% endfor %}
-          </ul>
-        {% else %}
-          None
-        {% endif %}
-      </td>
-    </tr>
-    <tr>
-      <th>Notes</th>
-      <td>{{ record.notes }}</td>
-    </tr>
-    <tr>
-      <th>Image</th>
-      <td>
-        {% if record.image %}
-          <img src="{{ record.image.url }}" alt="Survey Image" class="survey-image">
-        {% else %}
-          <span class="text-muted">No image uploaded.</span>
-        {% endif %}
-      </td>
-    </tr>
-  </table>
-
-  <div class="survey-detail-actions">
-    <a href="{% url 'my_surveys_view' %}" class="btn btn-primary">Back to My Surveys</a>
-    <a href="{% url 'create_surveillancerecord_view' %}" class="btn btn-success">Record Another Survey</a>
-  </div>
+<h2 class="survey-details-heading">Survey Details</h2>
+<table class="survey-detail-table">
+  <tr><th>Farm</th><td>{{ record.farm.name }}</td></tr>
+  <tr><th>Date</th><td>{{ record.date|date:"F j, Y" }}</td></tr>
+  <tr><th>Inspector</th><td>{{ record.inspector.get_full_name|default:record.inspector.username }}</td></tr>
+  <tr><th>Pests Found</th><td>{% for pest in record.pests_found.all %}<li>{{ pest.common_name }}</li>{% empty %}None{% endfor %}</td></tr>
+  <tr><th>Diseases Found</th><td>{% for disease in record.diseases_found.all %}<li>{{ disease.common_name }}</li>{% empty %}None{% endfor %}</td></tr>
+  <tr><th>Notes</th><td>{{ record.notes }}</td></tr>
+  <tr><th>Image</th><td>{% if record.image %}<img src="{{ record.image.url }}" alt="Survey Image" class="survey-image">{% else %}<span class="text-muted">No image uploaded.</span>{% endif %}</td></tr>
+</table>
+<div class="survey-detail-actions">
+  <a href="{% url 'my_surveys_view' %}" class="btn btn-primary">Back to My Surveys</a>
+  <a href="{% url 'create_surveillancerecord_view' %}" class="btn btn-success">Record Another Survey</a>
+</div>
 {% endblock %}

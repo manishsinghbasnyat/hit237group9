@@ -1,61 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <section class="dashboard">
-    <h2 class="dashboard-title">Survey Dashboard</h2>
-    
-    <div class="dashboard-cards">
-      <div class="dashboard-card">
-        <h3>Your Farms</h3>
-        <p>{{ user_farms|length }} registered</p>
-      </div>
-      <div class="dashboard-card">
-        <h3>Surveys Completed</h3>
-        <p>{{ survey_count }}</p>
-      </div>
+<section class="dashboard">
+  <h2 class="dashboard-title">Survey Dashboard</h2>
+  <div class="dashboard-cards">
+    <div class="dashboard-card"><h3>Your Farms</h3><p>{{ user_farms|length }} registered</p></div>
+    <div class="dashboard-card"><h3>Surveys Completed</h3><p>{{ survey_count }}</p></div>
+  </div>
+  <div class="dashboard-cards">
+    <div class="dashboard-card">
+      <h3>Farms</h3>
+      <ul class="dashboard-list">
+        {% for farm in user_farms %}<li><a href="{% url 'farm_detail' farm.pk %}">{{ farm.name }}</a></li>{% empty %}<li>No farms joined.</li>{% endfor %}
+      </ul>
     </div>
-
-    <div class="dashboard-cards">
-      <div class="dashboard-card">
-        <h3>Farms</h3>
-        <ul class="dashboard-list">
-          {% for farm in user_farms %}
-            <li>
-              <a href="{% url 'farm_detail' farm.pk %}">
-                {{ farm.name }}
-              </a>
-            </li>
-          {% empty %}
-            <li>No farms joined.</li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="dashboard-card">
-        <h3>Recent Surveys</h3>
-        <ul class="dashboard-list">
-          {% for survey in user_surveys|slice:":5" %}
-            <li>
-              <a href="{% url 'survey_detail_view' survey.pk %}">
-                {{ survey.farm.name }} — {{ survey.date }}
-              </a>
-            </li>
-          {% empty %}
-            <li>No surveys submitted yet.</li>
-          {% endfor %}
-        </ul>
-      </div>
+    <div class="dashboard-card">
+      <h3>Recent Surveys</h3>
+      <ul class="dashboard-list">
+        {% for survey in user_surveys|slice:":5" %}<li><a href="{% url 'survey_detail_view' survey.pk %}">{{ survey.farm.name }} — {{ survey.date }}</a></li>{% empty %}<li>No surveys submitted yet.</li>{% endfor %}
+      </ul>
     </div>
-
-    <div class="dashboard-links">
-      <a href="{% url 'create_surveillancerecord_view' %}" class="btn">
-        📋 Record a Survey
-      </a>
-      <a href="{% url 'my_surveys_view' %}" class="btn btn-green">
-        📑 My Surveys
-      </a>
-      <a href="{% url 'add_farm_view' %}" class="btn btn-blue">
-        ➕ Add a Farm
-      </a>
-    </div>
-  </section>
+  </div>
+  <div class="dashboard-links">
+    <a href="{% url 'create_surveillancerecord_view' %}" class="btn">📋 Record a Survey</a>
+    <a href="{% url 'my_surveys_view' %}" class="btn btn-green">📑 My Surveys</a>
+    <a href="{% url 'add_farm_view' %}" class="btn btn-blue">➕ Add a Farm</a>
+  </div>
+</section>
 {% endblock %}

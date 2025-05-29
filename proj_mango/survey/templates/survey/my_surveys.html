@@ -3,60 +3,28 @@
 {% block title %}My Surveys{% endblock %}
 
 {% block content %}
-  <h2 class="survey-details-heading">My Surveillance Records</h2>
-  {% if records %}
-    <table class="survey-list-table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Farm</th>
-          <th>Pests Found</th>
-          <th>Diseases Found</th>
-          <th>Details</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for record in records %}
-          <tr>
-            <td>{{ record.date|date:"F j, Y" }}</td>
-            <td>{{ record.farm.name }}</td>
-            <td>
-              {% if record.pests_found.all %}
-                <ul>
-                  {% for pest in record.pests_found.all %}
-                    <li>{{ pest.common_name }}</li>
-                  {% empty %}
-                    <li>None</li>
-                  {% endfor %}
-                </ul>
-              {% else %}
-                None
-              {% endif %}
-            </td>
-            <td>
-              {% if record.diseases_found.all %}
-                <ul>
-                  {% for disease in record.diseases_found.all %}
-                    <li>{{ disease.common_name }}</li>
-                  {% empty %}
-                    <li>None</li>
-                  {% endfor %}
-                </ul>
-              {% else %}
-                None
-              {% endif %}
-            </td>
-            <td>
-              <a href="{% url 'survey_detail_view' record.pk %}" class="btn btn-primary btn-sm">View</a>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  {% else %}
-    <p>No surveys found.</p>
-  {% endif %}
-  <div class="survey-detail-actions">
-    <a href="{% url 'create_surveillancerecord_view' %}" class="btn btn-success">Add New Record</a>
-  </div>
+<h2 class="survey-details-heading">My Surveillance Records</h2>
+{% if records %}
+  <table class="survey-list-table">
+    <thead>
+      <tr><th>Date</th><th>Farm</th><th>Pests Found</th><th>Diseases Found</th><th>Details</th></tr>
+    </thead>
+    <tbody>
+      {% for record in records %}
+      <tr>
+        <td>{{ record.date|date:"F j, Y" }}</td>
+        <td>{{ record.farm.name }}</td>
+        <td>{% for pest in record.pests_found.all %}<li>{{ pest.common_name }}</li>{% empty %}None{% endfor %}</td>
+        <td>{% for disease in record.diseases_found.all %}<li>{{ disease.common_name }}</li>{% empty %}None{% endfor %}</td>
+        <td><a href="{% url 'survey_detail_view' record.pk %}" class="btn btn-primary btn-sm">View</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No surveys found.</p>
+{% endif %}
+<div class="survey-detail-actions">
+  <a href="{% url 'create_surveillancerecord_view' %}" class="btn btn-success">Add New Record</a>
+</div>
 {% endblock %}

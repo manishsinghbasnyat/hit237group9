@@ -2,7 +2,6 @@
 
 {% block content %}
 <div class="form-container">
-    <!-- Dynamic heading: shows 'Edit' or 'Add' based on farm existence -->
     <h2 class="form-title">
         {% if farm and farm.pk %}
             Edit Farm: {{ farm.name }}
@@ -24,11 +23,9 @@
                 {% endfor %}
             </div>
         {% endfor %}
-        <!-- Dynamic button text: 'Save Changes' for edit, 'Add Farm' for add -->
         <button type="submit" class="btn btn-primary">
             {% if farm and farm.pk %}Save Changes{% else %}Add Farm{% endif %}
         </button>
-        
         <a href="{% url 'profile_view' %}" class="btn btn-secondary ms-2">Cancel</a>
     </form>
 </div>

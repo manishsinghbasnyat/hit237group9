@@ -2,19 +2,15 @@
 {% load static %}
 
 {% block title %}Mango Pests & Diseases{% endblock %}
-
 {% block nav_pest_active %}class="active"{% endblock %}
 
 {% block content %}
-<!-- Section Navigation -->
 <div class="section-nav">
     <a href="#pests" class="section-link">Mango Pests</a>
     <a href="#diseases" class="section-link">Mango Diseases</a>
 </div>
 
 <main class="container">
-
-    <!-- Mango Pests Section -->
     <section id="pests" class="pest-section">
         <h2 class="section-title">Mango Pests</h2>
         <div class="card-container">
@@ -36,13 +32,10 @@
                     <a href="{% url 'pest_detail' item_type='pest' item_id=pest.id %}" class="btn">View Details</a>
                 </div>
             </div>
-            {% empty %}
-            <p>No pests available.</p>
-            {% endfor %}
+            {% empty %}<p>No pests available.</p>{% endfor %}
         </div>
     </section>
 
-    <!-- Mango Diseases Section -->
     <section id="diseases" class="disease-section">
         <h2 class="section-title">Mango Diseases</h2>
         <div class="card-container">
@@ -64,11 +57,8 @@
                     <a href="{% url 'pest_detail' item_type='disease' item_id=disease.id %}" class="btn">View Details</a>
                 </div>
             </div>
-            {% empty %}
-            <p>No diseases available.</p>
-            {% endfor %}
+            {% empty %}<p>No diseases available.</p>{% endfor %}
         </div>
     </section>
-
 </main>
 {% endblock %}
