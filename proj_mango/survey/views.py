@@ -2,11 +2,22 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import SurveillanceRecordForm
-from .models import SurveillanceRecord
+from .models import SurveillanceRecord, Farm  # <-- Add Farm import
 
 @login_required
 def survey_home_view(request):
-    return render(request, 'survey/survey_home.html')
+    user = request.user
+    survey_count = SurveillanceRecord.objects.filter(inspector=user).count()
+    user_surveys = SurveillanceRecord.objects.filter(inspector=user)
+    user_farms = Farm.objects.filter(owner=user)  # Adjust if your user/farm relationship is different
+    farm_count = user_farms.count()
+    context = {
+        'survey_count': survey_count,
+        'user_surveys': user_surveys,
+        'user_farms': user_farms,
+        'farm_count': farm_count,
+    }
+    return render(request, 'survey/survey_home.html', context)
 
 @login_required
 def create_surveillancerecord_view(request):
